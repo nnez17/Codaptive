@@ -25,7 +25,19 @@
     "noUncheckedSideEffectImports": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./frontend/*"]
+      "@/*": ["./frontend/*"],
+      "@/components/*": ["./frontend/src/components/*"],
+      "@/lib/*": ["./frontend/src/lib/*"],
+      "@/hooks/*": ["./frontend/src/hooks/*"],
+      "@/store/*": ["./frontend/src/store/*"],
+      "@/utils/*": ["./frontend/src/utils/*"],
+      "@/assets/*": ["./frontend/src/assets/*"],
+      "@/styles/*": ["./frontend/src/styles/*"],
+      "@/pages/*": ["./frontend/src/pages/*"],
+      "@/routes/*": ["./frontend/src/routes/*"],
+      "@/services/*": ["./frontend/src/services/*"],
+      "@/types/*": ["./frontend/src/types/*"],
+      "data/*": ["./data/*"]
     }
   },
   "include": ["frontend"]
