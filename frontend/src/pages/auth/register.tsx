@@ -3,11 +3,13 @@
 import { useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import { Eye, EyeOff, X } from "lucide-react";
+import { userRegister } from "@/services/authService";
+import { useNotification } from "@/hooks/use-notification";
+import { LoadingSpinner } from "@/components/common/loadingSpinner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
 export default function Register() {
-  const navigate = useNavigate();
   const [step, setStep] = useState(1);
 
   const [name, setName] = useState("");
@@ -16,6 +18,10 @@ export default function Register() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const navigate = useNavigate();
+  const { notify } = useNotification();
 
   const totalSteps = 3;
   const progress = (step / totalSteps) * 100;
@@ -26,15 +32,57 @@ export default function Register() {
     else setStep((s: number) => s - 1);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    setIsLoading(true);
+
     if (password !== confirmPassword) {
-      alert("Passwords do not match!");
+      notify({
+        type: "error",
+        message: "Passwords do not match!",
+      });
       return;
     }
-    // TODO: Implement backend registration API call
-    navigate({ to: "/profile" });
+
+    try {
+      const payload = {
+        username: name,
+        email,
+        password,
+        confirmPassword,
+      };
+
+      const result = await userRegister(payload);
+
+      if (result.status === "success") {
+        notify({
+          type: "success",
+          message: "Registered successful.",
+        });
+
+        setTimeout(() => {
+          notify({
+            type: "info",
+            message: "Please check your email to verify your account.",
+          });
+        }, 1500);
+      }
+    } catch (err: any) {
+      const message =
+        err.response?.data?.message ||
+        "Something went wrong. Please try again.";
+      notify({
+        type: "error",
+        message,
+      });
+      console.error("Registration Error", err);
+    } finally {
+      setIsLoading(false);
+    }
   };
+
+  if (isLoading) return <LoadingSpinner label="Loading..." />;
 
   return (
     <div className="min-h-screen bg-white flex flex-col font-sans">

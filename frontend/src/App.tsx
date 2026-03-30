@@ -5,7 +5,9 @@ import Home from "./pages/landing/index";
 import Footer from "./components/layout/footer";
 import Login from "./pages/auth/login";
 import Register from "./pages/auth/register";
+import VerifyEmail from "./pages/auth/verifyEmail";
 import ForgotPassword from "./pages/auth/forgotPassword";
+import ResetPassword from "./pages/auth/resetPassword";
 import Profile from "./pages/dashboard/profile";
 import Learn from "./pages/learn/index";
 import Level from "./pages/learn/level";
@@ -26,6 +28,7 @@ import {
   Outlet,
   useRouterState,
 } from "@tanstack/react-router";
+import NotificationProvider from "./contexts/notificationProvider";
 
 import GlobalNotFound from "./pages/global-not-found";
 import { LoadingSpinner } from "./components/common/loadingSpinner";
@@ -75,12 +78,14 @@ function RootComponent() {
 
 function LandingSidebarLayout() {
   return (
-    <SidebarProvider defaultOpen={false}>
-      <AppSidebar />
-      <SidebarInset>
-        <Outlet />
-      </SidebarInset>
-    </SidebarProvider>
+    <NotificationProvider>
+      <SidebarProvider defaultOpen={false}>
+        <AppSidebar />
+        <SidebarInset>
+          <Outlet />
+        </SidebarInset>
+      </SidebarProvider>
+    </NotificationProvider>
   );
 }
 
@@ -124,10 +129,22 @@ const registerRoute = createRoute({
   component: Register,
 });
 
+const verifyEmailRoute = createRoute({
+  getParentRoute: () => landingRoute,
+  path: "/verify-email/$token",
+  component: VerifyEmail,
+});
+
 const forgotPasswordRoute = createRoute({
   getParentRoute: () => landingRoute,
   path: "/forgot-password",
   component: ForgotPassword,
+});
+
+const resetPasswordRoute = createRoute({
+  getParentRoute: () => landingRoute,
+  path: "/reset-password/$token",
+  component: ResetPassword,
 });
 
 const dashboardLayoutRoute = createRoute({
@@ -196,7 +213,9 @@ const routeTree = rootRoute.addChildren([
       indexRoute,
       loginRoute,
       registerRoute,
+      verifyEmailRoute,
       forgotPasswordRoute,
+      resetPasswordRoute,
     ]),
   ]),
   dashboardLayoutRoute.addChildren([

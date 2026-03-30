@@ -2,18 +2,51 @@
 
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
+import { useNotification } from "@/hooks/use-notification";
+import { forgotPassword } from "@/services/authService";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { LoadingSpinner } from "@/components/common/loadingSpinner";
 
 export default function ForgotPassword() {
   const [email, setEmail] = useState("");
   const [sent, setSent] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const { notify } = useNotification();
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    setIsLoading(true);
+
+    try {
+      const res = await forgotPassword(email);
+
+      if (res.status === "success") {
+        notify({
+          type: "success",
+          message: res.message || "Reset link sent. Please check your email.",
+        });
+      }
+    } catch (err: any) {
+      const message =
+        err.response?.data?.message ||
+        "Something went wrong. Please try again.";
+      notify({
+        type: "error",
+        message,
+      });
+      console.error("Forgot password error", err);
+    } finally {
+      setIsLoading(false);
+    }
+
     setSent(true);
   };
+
+  if (isLoading) return <LoadingSpinner label="Sent link..." />;
 
   return (
     <div className="min-h-screen bg-[#F9FAFB] flex items-center justify-center p-4">

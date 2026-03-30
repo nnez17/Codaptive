@@ -54,11 +54,11 @@ export default function Profilebar() {
           <div className="flex items-center gap-3">
             <div className="hidden md:flex flex-col text-right">
               <span className="text-sm font-bold text-gray-900 leading-none">
-                {account.name.split(" ")[0]}
+                {account.username.split(" ")[0]}
               </span>
-              {account.name.split(" ").slice(1).length > 0 && (
+              {account.username.split(" ").slice(1).length > 0 && (
                 <span className="text-sm text-gray-500 leading-tight mt-1 truncate max-w-[100px]">
-                  {account.name.split(" ").slice(1).join(" ")}
+                  {account.username.split(" ").slice(1).join(" ")}
                 </span>
               )}
             </div>
@@ -66,12 +66,12 @@ export default function Profilebar() {
               {account.avatar ? (
                 <img
                   src={account.avatar}
-                  alt={account.name}
+                  alt={account.username}
                   className="w-full h-full object-cover"
                 />
               ) : (
                 <span className="text-white text-xs md:text-sm font-semibold">
-                  {account.name.charAt(0).toUpperCase()}
+                  {account.username.charAt(0).toUpperCase()}
                 </span>
               )}
             </div>

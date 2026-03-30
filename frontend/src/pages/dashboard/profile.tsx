@@ -74,18 +74,18 @@ export default function Profile() {
                       {account.avatar ? (
                         <img
                           src={account.avatar}
-                          alt={account.name}
+                          alt={account.username}
                           className="w-full h-full object-cover"
                         />
                       ) : (
                         <span className="text-white text-2xl md:text-3xl font-bold">
-                          {account.name.charAt(0).toUpperCase()}
+                          {account.username.charAt(0).toUpperCase()}
                         </span>
                       )}
                     </div>
                     <div>
                       <h1 className="text-2xl md:text-3xl font-bold text-gray-900 tracking-tight">
-                        Hello {account.name}!
+                        Hello {account.username}!
                       </h1>
                       <p className="text-sm md:text-base text-gray-500 mt-1">
                         Ready to continue your learning streak?
@@ -142,6 +142,7 @@ export default function Profile() {
                       <ResponsiveContainer
                         width="100%"
                         height="100%"
+                        aspect={undefined}
                         className="[&_svg]:outline-none [&_svg]:border-none"
                       >
                         <BarChart

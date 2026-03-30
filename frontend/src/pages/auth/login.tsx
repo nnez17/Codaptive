@@ -2,20 +2,64 @@
 
 import { useState } from "react";
 import { Link, useNavigate } from "@tanstack/react-router";
+import { useAccount } from "@/contexts/account";
+import { getUserProfile } from "@/services/userService";
+import { userLogin } from "@/services/authService";
+import { useNotification } from "@/hooks/use-notification";
+import { LoadingSpinner } from "@/components/common/loadingSpinner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { CodeWindow } from "@/components/ui/codeWindow";
 
 export default function Login() {
-  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const navigate = useNavigate();
+  const { setAccount } = useAccount();
+  const { notify } = useNotification();
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: Implement backend login API call
-    navigate({ to: "/profile" });
+
+    setIsLoading(true);
+
+    try {
+      const loginResult = await userLogin(email, password);
+
+      const accessToken = loginResult.data.accessToken;
+      localStorage.setItem("accessToken", accessToken);
+
+      const profileResult = await getUserProfile();
+
+      if (profileResult.status === "success") {
+        setAccount(profileResult.data);
+
+        notify({
+          type: "success",
+          message: "Login successful.",
+        });
+
+        setTimeout(() => {
+          navigate({ to: "/profile" });
+        }, 1500);
+      }
+    } catch (err: any) {
+      const message =
+        err.response?.data?.message ||
+        "Something went wrong. Please try again.";
+      notify({
+        type: "error",
+        message,
+      });
+      console.error("Login error", err);
+    } finally {
+      setIsLoading(false);
+    }
   };
+
+  if (isLoading) return <LoadingSpinner label="Loading..." />;
 
   return (
     <div className="min-h-screen bg-white flex flex-col md:flex-row">

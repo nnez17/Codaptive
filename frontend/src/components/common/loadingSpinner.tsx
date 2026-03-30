@@ -24,7 +24,7 @@ export function LoadingSpinner({
   return (
     <div
       className={cn(
-        "flex flex-col items-center justify-center gap-3",
+        "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center gap-3",
         className,
       )}
     >
