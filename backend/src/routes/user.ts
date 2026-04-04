@@ -1,6 +1,14 @@
-import express from "express";
-import User from "../models/User.js";
-import { verifyToken } from "../middleware/verifyToken.js";
+import express, { type Request } from "express";
+import User from "../models/User";
+import { verifyToken } from "../middleware/verifyToken";
+
+declare global {
+  namespace Express {
+    interface Request {
+      userId?: string;
+    }
+  }
+}
 
 const router = express.Router();
 

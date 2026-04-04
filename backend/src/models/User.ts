@@ -1,5 +1,56 @@
 import { Schema, model } from "mongoose";
 
+export interface IUser {
+  username: string;
+  email: string;
+  password: string;
+  role: string;
+  isVerified: boolean;
+  verificationToken?: string;
+  resetPasswordToken?: string;
+  resetPasswordExpire?: Date;
+  avatar?: string;
+  stats?: {
+    xp: number;
+    streak: number;
+    level: number;
+    maxXP: number;
+  };
+  progress?: {
+    modules: Array<{
+      moduleId: Schema.Types.ObjectId;
+      name: string;
+      progress: number;
+      completed: boolean;
+    }>;
+    lessons: Array<{
+      lessonId: Schema.Types.ObjectId;
+      completed: boolean;
+      completedAt?: Date;
+    }>;
+    levels: Array<{
+      levelId: string;
+      status: "COMPLETED" | "ON GOING" | "LOCKED";
+    }>;
+  };
+  activity?: {
+    lastWeek: Array<{
+      day: Date;
+      lessons: number;
+      challenges: number;
+    }>;
+    lastMonth: Array<{
+      week: number;
+      lessons: number;
+      challenges: number;
+    }>;
+  };
+  settings?: {
+    theme: "light" | "dark";
+    notifications: boolean;
+  };
+}
+
 const userSchema = new Schema(
   {
     username: {
@@ -22,22 +73,27 @@ const userSchema = new Schema(
       minLength: 6,
       select: false,
     },
+    role: {
+      type: String,
+      enum: ["user", "admin"],
+      default: "user",
+    },
     isVerified: {
       type: Boolean,
       default: false,
     },
-    verificationToken: String,
-    resetPasswordToken: String,
+    verificationToken: { type: String, sparse: true },
+    resetPasswordToken: { type: String, sparse: true },
     resetPasswordExpire: Date,
     avatar: {
       type: String,
       default: "https://ui-avatars.com/api/?background=random&name=New+User",
     },
     stats: {
-      xp: { type: Number, default: 0 },
-      streak: { type: Number, default: 0 },
-      level: { type: Number, default: 1 },
-      maxXP: { type: Number, default: 1000 },
+      xp: { type: Number, default: 0, min: 0 },
+      streak: { type: Number, default: 0, min: 0 },
+      level: { type: Number, default: 1, min: 1 },
+      maxXP: { type: Number, default: 1000, min: 100 },
     },
     progress: {
       modules: [
