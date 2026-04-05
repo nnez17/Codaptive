@@ -9,7 +9,7 @@ export interface IQuestion extends Document {
   explanation: string;
   tags: string[];
   xpReward: number;
-  moduleId: Schema.Types.ObjectId;
+  moduleId?: Schema.Types.ObjectId;
   lessonId?: Schema.Types.ObjectId;
 }
 

@@ -5,12 +5,12 @@ import Module from "../models/Module";
 
 export const updateUserProgress = async (
   userId: string,
-  lessonId: string,
-  moduleId: string,
+  lessonId: mongoose.Types.ObjectId,
+  moduleId: mongoose.Types.ObjectId,
 ) => {
-  if (!mongoose.Types.ObjectId.isValid(userId)) throw new Error("Invalid userId");
-  if (!mongoose.Types.ObjectId.isValid(lessonId)) throw new Error("Invalid lessonId");
-  if (!mongoose.Types.ObjectId.isValid(moduleId)) throw new Error("Invalid moduleId");
+  if (!mongoose.isValidObjectId(userId)) throw new Error("Invalid userId");
+  if (!mongoose.isValidObjectId(lessonId)) throw new Error("Invalid lessonId");
+  if (!mongoose.isValidObjectId(moduleId)) throw new Error("Invalid moduleId");
 
   const user = (await User.findById(userId)) as IUser;
   if (!user) throw new Error("User not found");
@@ -20,8 +20,8 @@ export const updateUserProgress = async (
   if (!user.activity.lastWeek) user.activity.lastWeek = [];
   if (!user.activity.lastMonth) user.activity.lastMonth = [];
 
-  const lessonObjectId = new mongoose.Types.ObjectId(lessonId);
-  const moduleObjectId = new mongoose.Types.ObjectId(moduleId);
+  const lessonObjectId = lessonId;
+  const moduleObjectId = moduleId;
 
   const lessonIndex = user.progress.lessons.findIndex(
     (l) => l.lessonId.toString() === lessonId,
@@ -85,7 +85,11 @@ export const updateUserProgress = async (
   if (activityIndex > -1 && user.activity.lastWeek[activityIndex]) {
     user.activity.lastWeek[activityIndex].lessons += 1;
   } else {
-    user.activity.lastWeek.push({ day: today, lessons: 1, challenges: 0 } as any);
+    user.activity.lastWeek.push({
+      day: today,
+      lessons: 1,
+      challenges: 0,
+    } as any);
   }
 
   const now = new Date();
@@ -149,7 +153,7 @@ export const updateUserProgress = async (
 };
 
 export const updateUserChallengeProgress = async (userId: string) => {
-  if (!mongoose.Types.ObjectId.isValid(userId)) throw new Error("Invalid userId");
+  if (!mongoose.isValidObjectId(userId)) throw new Error("Invalid userId");
 
   const user = (await User.findById(userId)) as IUser;
   if (!user) throw new Error("User not found");
@@ -168,7 +172,11 @@ export const updateUserChallengeProgress = async (userId: string) => {
   if (activityIndex > -1 && user.activity.lastWeek[activityIndex]) {
     user.activity.lastWeek[activityIndex].challenges += 1;
   } else {
-    user.activity.lastWeek.push({ day: today, lessons: 0, challenges: 1 } as any);
+    user.activity.lastWeek.push({
+      day: today,
+      lessons: 0,
+      challenges: 1,
+    } as any);
   }
 
   const now = new Date();
@@ -200,7 +208,7 @@ export const updateUserSettings = async (
   userId: string,
   settings: { theme?: "light" | "dark"; notifications?: boolean },
 ) => {
-  if (!mongoose.Types.ObjectId.isValid(userId)) throw new Error("Invalid userId");
+  if (!mongoose.isValidObjectId(userId)) throw new Error("Invalid userId");
 
   const user = (await User.findById(userId)) as IUser;
   if (!user) throw new Error("User not found");
@@ -208,7 +216,8 @@ export const updateUserSettings = async (
   if (!user.settings) user.settings = { theme: "light", notifications: false };
 
   if (settings.theme) user.settings.theme = settings.theme;
-  if (settings.notifications !== undefined) user.settings.notifications = settings.notifications;
+  if (settings.notifications !== undefined)
+    user.settings.notifications = settings.notifications;
 
   user.markModified("settings");
   return await user.save();

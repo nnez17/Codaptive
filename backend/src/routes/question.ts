@@ -66,16 +66,14 @@ router.get("/list", verifyToken, isAdmin, async (req, res) => {
       });
     }
 
-    if (!mongoose.Types.ObjectId.isValid(moduleId)) {
+    if (!mongoose.isValidObjectId(moduleId)) {
       return res.status(400).json({
         status: "fail",
         message: "Invalid Module ID format",
       });
     }
 
-    const questions = await Question.find<IQuestion>({
-      moduleId: new mongoose.Types.ObjectId(moduleId) as any,
-    }).lean();
+    const questions = await Question.find<IQuestion>({ moduleId }).lean();
 
     res.status(200).json({
       status: "success",
@@ -157,7 +155,7 @@ router.post("/submit", verifyToken, async (req, res) => {
     const question = (await Question.findById(questionId).select(
       "+correctAnswer +explanation",
     )) as IQuestion;
-    const { lessonId, moduleId } = question;
+    const { lessonId, moduleId } = question as any;
 
     if (!question) {
       return res.status(404).json({
@@ -168,7 +166,7 @@ router.post("/submit", verifyToken, async (req, res) => {
 
     const isCorrect = question.correctAnswer === userAnswer;
 
-    const user = (await User.findById(userId)) as IUser;
+    const user = await User.findById(userId);
     if (!user) {
       return res.status(404).json({
         status: "fail",
@@ -187,11 +185,7 @@ router.post("/submit", verifyToken, async (req, res) => {
         user.stats.maxXP = Math.round(user.stats.maxXP * 1.2);
       }
 
-      await updateUserProgress(
-        userId,
-        lessonId ? lessonId.toString() : "",
-        moduleId ? moduleId.toString() : "",
-      );
+      await updateUserProgress(userId, lessonId, moduleId);
     } else {
       user.stats.streak = 0;
     }
@@ -240,7 +234,7 @@ router.get("/next", verifyToken, async (req, res) => {
     const questions = await Question.aggregate([
       {
         $match: {
-          moduleId: new mongoose.Types.ObjectId(moduleId),
+          moduleId,
           difficulty: targetDifficulty,
         },
       },
@@ -249,7 +243,7 @@ router.get("/next", verifyToken, async (req, res) => {
 
     if (questions.length === 0) {
       const fallbackQuestions = await Question.aggregate([
-        { $match: { moduleId: new mongoose.Types.ObjectId(moduleId) } },
+        { $match: { moduleId } },
         { $sample: { size: 1 } },
       ]);
 
