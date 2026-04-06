@@ -8,7 +8,7 @@ import { updateUserProgress } from "../services/progressService";
 
 const router = express.Router();
 
-router.post("/create", verifyToken, isAdmin, async (req, res) => {
+router.post("/questions", verifyToken, isAdmin, async (req, res) => {
   try {
     const {
       questionText,
@@ -55,7 +55,7 @@ router.post("/create", verifyToken, isAdmin, async (req, res) => {
   }
 });
 
-router.get("/list", verifyToken, isAdmin, async (req, res) => {
+router.get("/questions", verifyToken, isAdmin, async (req, res) => {
   try {
     const { moduleId } = req.query;
 
@@ -73,7 +73,9 @@ router.get("/list", verifyToken, isAdmin, async (req, res) => {
       });
     }
 
-    const questions = await Question.find<IQuestion>({ moduleId }).lean();
+    const questions = await Question.find<IQuestion>({
+      moduleId: moduleId as any,
+    }).lean();
 
     res.status(200).json({
       status: "success",
@@ -89,7 +91,7 @@ router.get("/list", verifyToken, isAdmin, async (req, res) => {
   }
 });
 
-router.put("/update/:id", verifyToken, isAdmin, async (req, res) => {
+router.put("/questions/:id", verifyToken, isAdmin, async (req, res) => {
   try {
     const questionId = req.params.id;
     const updateData = req.body;
@@ -121,7 +123,7 @@ router.put("/update/:id", verifyToken, isAdmin, async (req, res) => {
   }
 });
 
-router.delete("/delete/:id", verifyToken, isAdmin, async (req, res) => {
+router.delete("/questions/:id", verifyToken, isAdmin, async (req, res) => {
   try {
     const questionId = req.params.id;
 
@@ -147,7 +149,7 @@ router.delete("/delete/:id", verifyToken, isAdmin, async (req, res) => {
   }
 });
 
-router.post("/submit", verifyToken, async (req, res) => {
+router.post("/questions/submit", verifyToken, async (req, res) => {
   try {
     const { questionId, userAnswer } = req.body;
     const userId = req.userId as string;
@@ -205,7 +207,7 @@ router.post("/submit", verifyToken, async (req, res) => {
   }
 });
 
-router.get("/next", verifyToken, async (req, res) => {
+router.get("/questions/next", verifyToken, async (req, res) => {
   try {
     const userId = req.userId;
     const { moduleId } = req.query;

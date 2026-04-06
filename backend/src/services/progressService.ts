@@ -24,7 +24,7 @@ export const updateUserProgress = async (
   const moduleObjectId = moduleId;
 
   const lessonIndex = user.progress.lessons.findIndex(
-    (l) => l.lessonId.toString() === lessonId,
+    (l) => l.lessonId === lessonId,
   );
 
   if (lessonIndex === -1) {
@@ -59,7 +59,7 @@ export const updateUserProgress = async (
       : 0;
 
   const moduleIndex = user.progress.modules.findIndex(
-    (m) => m.moduleId.toString() === moduleId,
+    (m) => m.moduleId === moduleId,
   );
 
   if (moduleIndex > -1 && user.progress.modules[moduleIndex]) {

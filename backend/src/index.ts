@@ -7,6 +7,7 @@ import adminRoutes from "./routes/admin";
 import authRoutes from "./routes/auth";
 import userRoutes from "./routes/user";
 import questionRoutes from "./routes/question";
+import lessonRoutes from "./routes/lesson";
 
 const app = express();
 
@@ -27,7 +28,8 @@ app.use(express.json());
 app.use("/admin", adminRoutes);
 app.use("/auth", authRoutes);
 app.use("/user", userRoutes);
-app.use("/question", questionRoutes);
+app.use("/", questionRoutes);
+app.use("/", lessonRoutes);
 
 app.listen(process.env.PORT, () => {
   console.log(`Server is running at http://localhost:${process.env.PORT}`);

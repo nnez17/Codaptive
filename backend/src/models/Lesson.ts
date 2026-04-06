@@ -1,22 +1,73 @@
-import { Schema, model, Document, Types } from "mongoose";
+import { Schema, model, Document } from "mongoose";
 
-export interface ILesson extends Document {
-  moduleId: Types.ObjectId;
-  title: string;
-  content: string;
-  order: number;
-  xpReward: number;
+interface IQuestion {
+  id: string;
+  type: "mcq" | "fill";
+  instruction?: string;
+  question: string;
+  code?: string;
+  options?: string[];
+  answer: string | string[];
+  expectedOutput?: string;
+  correctFeedback?: string;
+  wrongFeedback?: string;
 }
 
-const lessonSchema = new Schema<ILesson>(
-  {
-    moduleId: { type: Schema.Types.ObjectId, ref: "Module", required: true },
-    title: { type: String, required: true },
-    content: { type: String, required: true },
-    order: { type: Number, default: 0 },
-    xpReward: { type: Number, default: 50 },
+interface IPage {
+  type: "explanation" | "quiz";
+  content?: string;
+  example?: string;
+  quizType?: "mcq" | "fill";
+  question?: IQuestion;
+}
+
+export interface ILesson extends Document {
+  lessonId: string;
+  title: string;
+  level: "advanced" | "intermediate" | "beginner";
+  pages: IPage[];
+}
+
+const lessonSchema = new Schema<ILesson>({
+  lessonId: { type: String, required: true, unique: true, index: true },
+  title: { type: String, required: true },
+  level: {
+    type: String,
+    enum: ["advanced", "intermediate", "beginner"],
+    default: "advanced",
   },
-  { timestamps: true },
-);
+  pages: [
+    {
+      _id: false,
+      type: {
+        type: String,
+        enum: ["explanation", "quiz"],
+        required: true,
+      },
+      content: { type: String },
+      example: { type: String },
+      quizType: {
+        type: String,
+        enum: ["mcq", "fill"],
+      },
+      question: {
+        _id: false,
+        id: { type: String },
+        type: {
+          type: String,
+          enum: ["mcq", "fill"],
+        },
+        instruction: { type: String },
+        question: { type: String },
+        code: { type: String },
+        options: [{ type: String }],
+        answer: { type: Schema.Types.Mixed },
+        expectedOutput: { type: String },
+        correctFeedback: { type: String },
+        wrongFeedback: { type: String },
+      },
+    },
+  ],
+});
 
 export default model<ILesson>("Lesson", lessonSchema);
