@@ -1,20 +1,13 @@
 import { Schema, model, Document, Types } from "mongoose";
 
-interface IModuleProgress {
-  moduleId: Types.ObjectId;
-  name: string;
-  progress: number;
-  completed: boolean;
-}
-
 interface ILessonProgress {
-  lessonId: Types.ObjectId;
+  lessonId: string;
   completed: boolean;
   completedAt?: Date;
 }
 
 interface IActivityDay {
-  day: Date;
+  day: string;
   lessons: number;
   challenges: number;
 }
@@ -42,7 +35,6 @@ export interface IUser extends Document {
     maxXP: number;
   };
   progress: {
-    modules: IModuleProgress[];
     lessons: ILessonProgress[];
     levels: { levelId: string; status: "COMPLETED" | "ON GOING" | "LOCKED" }[];
   };
@@ -101,19 +93,12 @@ const userSchema = new Schema(
       maxXP: { type: Number, default: 1000, min: 100 },
     },
     progress: {
-      modules: [
-        {
-          moduleId: { type: Schema.Types.ObjectId, ref: "Module" },
-          name: { type: String },
-          progress: { type: Number, default: 0, min: 0, max: 100 },
-          completed: { type: Boolean, default: false },
-        },
-      ],
       lessons: [
         {
-          lessonId: { type: Schema.Types.ObjectId, ref: "Lesson" },
+          lessonId: { type: String, ref: "Lesson" },
           completed: { type: Boolean, default: false },
-          completedAt: { type: Date },
+          completedAt: { type: Date, default: Date.now() },
+          _id: false,
         },
       ],
       levels: [
@@ -124,15 +109,17 @@ const userSchema = new Schema(
             enum: ["COMPLETED", "ON GOING", "LOCKED"],
             default: "LOCKED",
           },
+          _id: false,
         },
       ],
     },
     activity: {
       lastWeek: [
         {
-          day: { type: Date },
+          day: { type: String },
           lessons: { type: Number, default: 0 },
           challenges: { type: Number, default: 0 },
+          _id: false,
         },
       ],
       lastMonth: [
@@ -140,6 +127,7 @@ const userSchema = new Schema(
           week: { type: Number },
           lessons: { type: Number, default: 0 },
           challenges: { type: Number, default: 0 },
+          _id: false,
         },
       ],
     },

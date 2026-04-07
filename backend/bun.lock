@@ -5,6 +5,7 @@
     "": {
       "name": "backend",
       "dependencies": {
+        "@types/mongoose": "^5.11.97",
         "bcrypt": "^6.0.0",
         "cookie-parser": "^1.4.7",
         "cors": "^2.8.6",
@@ -51,6 +52,8 @@
     "@types/http-errors": ["@types/http-errors@2.0.5", "", {}, ""],
 
     "@types/jsonwebtoken": ["@types/jsonwebtoken@9.0.10", "", { "dependencies": { "@types/ms": "*", "@types/node": "*" } }, ""],
+
+    "@types/mongoose": ["@types/mongoose@5.11.97", "", { "dependencies": { "mongoose": "*" } }, "sha512-cqwOVYT3qXyLiGw7ueU2kX9noE8DPGRY6z8eUxudhXY8NZ7DMKYAxyZkLSevGfhCX3dO/AoX5/SO9lAzfjon0Q=="],
 
     "@types/ms": ["@types/ms@2.1.0", "", {}, ""],
 
