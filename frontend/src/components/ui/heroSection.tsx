@@ -5,19 +5,19 @@ export function HeroVisual() {
     <div className="relative flex justify-center items-center isolate w-full max-w-[646px] h-[400px] md:h-[600px] mx-auto bg-transparent">
       {/* Decorative Elements */}
       <div
-        className="absolute w-32 h-32 right-10 top-10 bg-[#FACC15] mix-blend-multiply opacity-70 blur-md rounded-full pointer-events-none"
+        className="absolute w-32 h-32 right-10 top-10 bg-[#FACC15] mix-blend-multiply dark:mix-blend-screen opacity-70 dark:opacity-30 blur-md rounded-full pointer-events-none"
         style={{ zIndex: 0 }}
       />
 
       {/* Persian Pink */}
       <div
-        className="absolute w-32 h-32 left-20 -bottom-8 bg-[#F472B6] mix-blend-multiply opacity-70 blur-md rounded-full pointer-events-none"
+        className="absolute w-32 h-32 left-20 -bottom-8 bg-[#F472B6] mix-blend-multiply dark:mix-blend-screen opacity-70 dark:opacity-30 blur-md rounded-full pointer-events-none"
         style={{ zIndex: 1 }}
       />
 
       {/* Malibu */}
       <div
-        className="absolute w-32 h-32 left-4 md:left-8 top-6 bg-[#60A5FA] mix-blend-multiply opacity-70 blur-md rounded-full pointer-events-none"
+        className="absolute w-32 h-32 left-4 md:left-8 top-6 bg-[#60A5FA] mix-blend-multiply dark:mix-blend-screen opacity-70 dark:opacity-30 blur-md rounded-full pointer-events-none"
         style={{ zIndex: 3 }}
       />
 

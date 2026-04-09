@@ -37,16 +37,16 @@ const LabeledInput = React.forwardRef<HTMLInputElement, LabeledInputProps>(
           {/* Labeled Border Container */}
           <div
             className={cn(
-              "relative border rounded-xl transition-all duration-200 bg-white",
+              "relative border rounded-xl transition-all duration-200 bg-background",
               error
                 ? "border-red-500 shadow-[0_0_0_1px_rgba(239,68,68,0.1)]"
-                : "border-gray-300 group-within:border-blue-500 group-within:ring-1 group-within:ring-blue-500/20",
+                : "border-border group-within:border-primary group-within:ring-1 group-within:ring-primary/20",
             )}
           >
             {/* Label - Floating on the border */}
             <label
               htmlFor={props.id || label}
-              className="absolute -top-2.5 left-4 bg-white px-1.5 text-xs font-medium text-gray-500"
+              className="absolute -top-2.5 left-4 bg-background px-1.5 text-xs font-medium text-muted-foreground"
             >
               {label} {required && <span className="text-red-500">*</span>}
             </label>
@@ -57,7 +57,7 @@ const LabeledInput = React.forwardRef<HTMLInputElement, LabeledInputProps>(
                 id={props.id || label}
                 type={actualType}
                 className={cn(
-                  "flex-1 bg-transparent border-none p-0 text-gray-900 placeholder:text-gray-400 focus:ring-0 text-base sm:text-lg font-medium outline-none",
+                  "flex-1 bg-transparent border-none p-0 text-foreground placeholder:text-muted-foreground focus:ring-0 text-base sm:text-lg font-medium outline-none",
                   className,
                 )}
                 value={value}
@@ -68,7 +68,7 @@ const LabeledInput = React.forwardRef<HTMLInputElement, LabeledInputProps>(
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="ml-2 text-gray-400 hover:text-gray-600 transition-colors"
+                  className="ml-2 text-muted-foreground hover:text-foreground transition-colors"
                 >
                   {showPassword ? (
                     <EyeOff className="w-5 h-5" />
@@ -82,7 +82,7 @@ const LabeledInput = React.forwardRef<HTMLInputElement, LabeledInputProps>(
 
           {maxLengthDisplay !== undefined && (
             <div className="flex justify-end mt-1 px-1">
-              <span className="text-[10px] sm:text-xs text-gray-400 font-medium">
+              <span className="text-[10px] sm:text-xs text-muted-foreground font-medium">
                 {charCount}/{maxLengthDisplay}
               </span>
             </div>

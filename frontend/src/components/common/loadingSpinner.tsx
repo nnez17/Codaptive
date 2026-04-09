@@ -29,10 +29,10 @@ export function LoadingSpinner({
       )}
     >
       <Loader2
-        className={cn("animate-spin text-blue-500", sizeClasses[size])}
+        className={cn("animate-spin text-primary", sizeClasses[size])}
       />
       {label && (
-        <p className="text-sm font-medium text-gray-500 animate-pulse">
+        <p className="text-sm font-medium text-muted-foreground animate-pulse">
           {label}
         </p>
       )}

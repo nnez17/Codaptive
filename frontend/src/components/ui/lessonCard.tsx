@@ -22,12 +22,12 @@ export function LessonCard({
   return (
     <button
       className={cn(
-        "flex flex-col items-start w-full p-5 rounded-2xl border-2 transition-all duration-200 text-left bg-white",
+        "flex flex-col items-start w-full p-5 rounded-2xl border-2 transition-all duration-200 text-left bg-card",
         isLocked
-          ? "border-transparent bg-gray-50 opacity-60 pointer-events-none"
+          ? "border-transparent bg-muted/50 opacity-60 pointer-events-none text-muted-foreground"
           : isCompleted
-            ? "border-green-200 hover:border-green-400 shadow-sm"
-            : "border-gray-200 hover:border-blue-400 hover:shadow-md cursor-pointer",
+            ? "border-green-500/30 hover:border-green-500/50 shadow-sm"
+            : "border-border hover:border-primary/50 hover:shadow-md cursor-pointer",
         className,
       )}
       disabled={isLocked}
@@ -37,10 +37,10 @@ export function LessonCard({
         className={cn(
           "inline-flex items-center px-2 py-0.5 rounded-md text-xs font-bold uppercase tracking-wider mb-2",
           isLocked
-            ? "bg-gray-200 text-gray-500"
+            ? "bg-muted-foreground/20 text-muted-foreground"
             : isCompleted
-              ? "bg-green-100 text-green-700"
-              : "bg-blue-100 text-blue-700",
+              ? "bg-green-500/20 text-green-500"
+              : "bg-primary/20 text-primary",
         )}
       >
         MODULE {moduleNumber}
@@ -49,14 +49,14 @@ export function LessonCard({
       <h3
         className={cn(
           "text-lg font-bold mb-1",
-          isLocked ? "text-gray-500" : "text-gray-900",
+          isLocked ? "text-muted-foreground" : "text-foreground",
         )}
       >
         {title}
       </h3>
 
       {description && (
-        <p className="text-sm text-gray-500 font-medium line-clamp-2">
+        <p className="text-sm text-muted-foreground font-medium line-clamp-2">
           {description}
         </p>
       )}

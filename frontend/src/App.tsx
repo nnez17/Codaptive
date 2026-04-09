@@ -8,7 +8,7 @@ import Register from "./pages/auth/register";
 import VerifyEmail from "./pages/auth/verifyEmail";
 import ForgotPassword from "./pages/auth/forgotPassword";
 import ResetPassword from "./pages/auth/resetPassword";
-import Profile from "./pages/dashboard/profile";
+import Profile from "./pages/dashboard/user";
 import Learn from "./pages/learn/index";
 import Level from "./pages/learn/level";
 import Lesson from "./pages/learn/lesson";
@@ -17,6 +17,7 @@ import Profilebar from "./components/layout/profilebar";
 import Settings from "./pages/settings/index";
 
 import { AccountProvider } from "./contexts/account";
+import { ThemeProvider } from "./contexts/themeProvider";
 import { SidebarInset, SidebarProvider } from "./components/ui/sidebar";
 import { AppSidebar } from "./components/layout/sidebar";
 import { DashboardLayout } from "./components/layout/dashboard-layout";
@@ -48,9 +49,13 @@ function RootComponent() {
       routerState.resolvedLocation?.pathname ?? routerState.location.pathname;
     const toPath = routerState.location.pathname;
 
+    const toHash = routerState.location.hash;
     const isTargetTransition =
-      (fromPath === "/" && toPath === "/profile") ||
-      (fromPath === "/profile" && toPath === "/");
+      (toPath === "/" &&
+        fromPath !== "/" &&
+        !["community", "path"].includes(toHash)) ||
+      (fromPath === "/" &&
+        ["/profile", "/login", "/register"].includes(toPath));
 
     if (routerState.status === "pending" && isTargetTransition) {
       setIsTransitioning(true);
@@ -67,7 +72,7 @@ function RootComponent() {
   return (
     <>
       {isTransitioning && (
-        <div className="fixed inset-0 z-9999 flex items-center justify-center bg-white animate-in fade-in duration-300">
+        <div className="fixed inset-0 z-9999 flex items-center justify-center bg-background animate-in fade-in duration-300">
           <LoadingSpinner size="lg" label="Loading Codaptive..." />
         </div>
       )}
@@ -96,12 +101,25 @@ const landingSidebarLayoutRoute = createRoute({
 });
 
 function LandingLayout() {
+  const routerState = useRouterState();
+  const isRegisterPage = routerState.location.pathname === "/register";
+
+  if (isRegisterPage) {
+    return (
+      <main className="flex-1 flex flex-col">
+        <Outlet />
+      </main>
+    );
+  }
+
   return (
-    <>
+    <div className="flex flex-col min-h-dvh">
       <Navbar showTrigger={true} />
-      <Outlet />
+      <main className="flex-1 flex flex-col">
+        <Outlet />
+      </main>
       <Footer />
-    </>
+    </div>
   );
 }
 
@@ -188,7 +206,6 @@ const learnLevelRoute = createRoute({
   component: Level,
 });
 
-// Focused Lesson Layout - No Sidebar, No Profilebar
 const focusedLessonRoute = createRoute({
   getParentRoute: () => rootRoute,
   id: "focused-lesson-layout",
@@ -239,9 +256,11 @@ declare module "@tanstack/react-router" {
 
 export default function App() {
   return (
-    <AccountProvider>
-      <RouterProvider router={router} />
-    </AccountProvider>
+    <ThemeProvider defaultTheme="system" storageKey="codaptive-ui-theme">
+      <AccountProvider>
+        <RouterProvider router={router} />
+      </AccountProvider>
+    </ThemeProvider>
   );
 }
 

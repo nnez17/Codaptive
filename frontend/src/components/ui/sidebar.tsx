@@ -56,6 +56,7 @@ function SidebarProvider({
   defaultOpen = true,
   open: openProp,
   onOpenChange: setOpenProp,
+  forceIsMobile,
   className,
   style,
   children,
@@ -64,8 +65,10 @@ function SidebarProvider({
   defaultOpen?: boolean;
   open?: boolean;
   onOpenChange?: (open: boolean) => void;
+  forceIsMobile?: boolean;
 }) {
-  const isMobile = useIsMobile();
+  const defaultIsMobile = useIsMobile();
+  const isMobile = forceIsMobile !== undefined ? forceIsMobile : defaultIsMobile;
   const [openMobile, setOpenMobile] = React.useState(false);
 
   // This is the internal state of the sidebar.
@@ -168,7 +171,7 @@ function Sidebar({
       <aside
         data-slot="sidebar"
         className={cn(
-          "flex h-full w-(--sidebar-width) flex-col bg-sidebar text-sidebar-foreground",
+          "flex min-h-svh w-(--sidebar-width) flex-col bg-sidebar text-sidebar-foreground",
           className,
         )}
         {...props}

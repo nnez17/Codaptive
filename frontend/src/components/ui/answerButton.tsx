@@ -24,17 +24,17 @@ export function AnswerButton({
       return "border-red-500 bg-red-50 text-red-700";
     }
     if (isSelected) {
-      return "border-blue-500 bg-blue-50 text-blue-700";
+      return "border-primary bg-primary/10 text-primary";
     }
-    return "border-[#E5E5E5] bg-white text-gray-800 hover:border-blue-300 hover:bg-blue-50/50";
+    return "border-border bg-card text-foreground hover:border-primary/50 hover:bg-primary/5";
   };
 
   const getLetterStyles = () => {
     if (status === "correct")
       return "bg-green-100 text-green-700 border-green-200";
     if (status === "incorrect") return "bg-red-100 text-red-700 border-red-200";
-    if (isSelected) return "bg-blue-100 text-blue-700 border-blue-200";
-    return "bg-gray-50 text-gray-500 border-gray-200";
+    if (isSelected) return "bg-primary/20 text-primary border-primary/30";
+    return "bg-muted text-muted-foreground border-border";
   };
 
   return (

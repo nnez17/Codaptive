@@ -55,34 +55,37 @@ export default function VerifyEmail() {
   };
 
   const handleResendEmail = () => {
-    alert("Email verifikasi telah dikirim ulang!");
+    notify({
+      type: "success",
+      message: "Email verifikasi telah dikirim ulang!",
+    });
   };
 
   return (
-    <div className="flex-1 flex items-center justify-center p-4 md:p-8 order-2 md:order-1">
+    <div className="flex-1 flex items-center justify-center p-4 md:p-8">
       <div className="w-full max-w-[400px]">
         <div className="text-left pb-8">
-          <h1 className="text-2xl md:text-3xl font-bold text-gray-900">
+          <h1 className="text-2xl md:text-3xl font-bold text-foreground">
             {status === "success" ? "All Set!" : "Verify your"}
           </h1>
-          <h2 className="text-xl md:text-lg font-semibold text-gray-900 mt-1">
+          <h2 className="text-xl md:text-lg font-semibold text-foreground mt-1">
             Codaptive Account
           </h2>
         </div>
 
         <div className="space-y-6">
-          <div className="bg-gray-50 border border-gray-100 rounded-2xl p-6 text-center">
-            <div className="mx-auto w-16 h-16 bg-white rounded-2xl shadow-sm flex items-center justify-center mb-4">
+          <div className="bg-muted border border-border rounded-2xl p-6 text-center">
+            <div className="mx-auto w-16 h-16 bg-background rounded-2xl shadow-sm flex items-center justify-center mb-4">
               {status === "success" ? (
                 <CheckCircle2 className="w-8 h-8 text-green-500" />
               ) : status === "error" ? (
                 <AlertCircle className="w-8 h-8 text-red-500" />
               ) : (
-                <Mail className="w-8 h-8 text-black" />
+                <Mail className="w-8 h-8 text-foreground" />
               )}
             </div>
 
-            <h3 className="text-lg font-bold text-gray-900 mb-2">
+            <h3 className="text-lg font-bold text-foreground mb-2">
               {status === "success"
                 ? "Email Verified"
                 : status === "error"
@@ -90,7 +93,7 @@ export default function VerifyEmail() {
                   : "Check your inbox"}
             </h3>
 
-            <p className="text-sm text-gray-600 leading-relaxed">
+            <p className="text-sm text-muted-foreground leading-relaxed">
               {status === "success"
                 ? "Akun kamu sudah aktif. Sekarang kamu bisa menikmati semua fitur Codaptive."
                 : status === "error"
@@ -103,7 +106,7 @@ export default function VerifyEmail() {
             {status === "success" ? (
               <Button
                 asChild
-                className="w-full h-[46px] rounded-xl text-base font-bold bg-black text-white hover:bg-black/90 mt-2"
+                className="w-full h-[46px] rounded-xl text-base font-bold bg-primary text-primary-foreground hover:bg-primary/90 mt-2"
               >
                 <Link to="/login">Sign In Now</Link>
               </Button>
@@ -112,7 +115,7 @@ export default function VerifyEmail() {
                 <Button
                   onClick={handleResendEmail}
                   disabled={status === "loading"}
-                  className="w-full h-[46px] rounded-xl text-base font-bold bg-black text-white hover:bg-black/90 mt-2"
+                  className="w-full h-[46px] rounded-xl text-base font-bold bg-primary text-primary-foreground hover:bg-primary/90 mt-2"
                 >
                   {status === "loading" ? (
                     <LoadingSpinner size="sm" label="Verify..." />
@@ -124,7 +127,7 @@ export default function VerifyEmail() {
                 <Button
                   variant="ghost"
                   asChild
-                  className="w-full h-[46px] rounded-xl text-base font-semibold text-gray-600 hover:bg-gray-50"
+                  className="w-full h-[46px] rounded-xl text-base font-semibold text-muted-foreground hover:bg-muted/50"
                 >
                   <Link
                     to="/login"

@@ -26,7 +26,18 @@ export default function Register() {
   const totalSteps = 3;
   const progress = (step / totalSteps) * 100;
 
-  const handleNext = () => setStep((s: number) => Math.min(s + 1, totalSteps));
+  const handleNext = () => {
+    if (step === 2) {
+      if (!email.includes("@")) {
+        notify({
+          type: "error",
+          message: "Please enter a valid email address!",
+        });
+        return;
+      }
+    }
+    setStep((s: number) => Math.min(s + 1, totalSteps));
+  };
   const handleBack = () => {
     if (step === 1) navigate({ to: "/login" });
     else setStep((s: number) => s - 1);
@@ -37,11 +48,21 @@ export default function Register() {
 
     setIsLoading(true);
 
+    if (password.length < 6) {
+      notify({
+        type: "error",
+        message: "Password must be at least 6 characters long!",
+      });
+      setIsLoading(false);
+      return;
+    }
+
     if (password !== confirmPassword) {
       notify({
         type: "error",
         message: "Passwords do not match!",
       });
+      setIsLoading(false);
       return;
     }
 
@@ -85,21 +106,21 @@ export default function Register() {
   if (isLoading) return <LoadingSpinner label="Loading..." />;
 
   return (
-    <div className="min-h-screen bg-white flex flex-col font-sans">
+    <div className="min-h-screen bg-background flex flex-col font-sans">
       {/* Progress Header */}
-      <header className="sticky top-0 left-0 right-0 h-16 flex items-center px-4 md:px-8 bg-white z-50">
+      <header className="h-16 flex items-center px-4 md:px-8 bg-background z-50 border-b border-border">
         <div className="max-w-4xl mx-auto w-full flex items-center gap-4 md:gap-8">
           <button
             type="button"
             onClick={handleBack}
-            className="p-2 hover:bg-gray-100 rounded-full transition-colors text-gray-400"
+            className="p-2 hover:bg-muted rounded-full transition-colors text-muted-foreground"
             aria-label="Back or Close"
           >
             <X className="w-5 h-5" />
           </button>
-          <div className="flex-1 h-3 bg-gray-100 rounded-full overflow-hidden">
+          <div className="flex-1 h-3 bg-muted rounded-full overflow-hidden">
             <div
-              className="h-full bg-blue-500 transition-all duration-500 ease-out rounded-full"
+              className="h-full bg-primary transition-all duration-500 ease-out rounded-full"
               style={{ width: `${progress}%` }}
             />
           </div>
@@ -118,14 +139,14 @@ export default function Register() {
                 />
                 <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-32 h-4 bg-black/5 blur-lg rounded-full" />
               </div>
-              <h1 className="text-xl md:text-2xl font-bold text-gray-800 leading-relaxed max-w-[400px]">
+              <h1 className="text-xl md:text-2xl font-bold text-foreground leading-relaxed max-w-[400px]">
                 Sebelum kita belajar bersama, aku akan memberikan beberapa
                 pertanyaan untuk mengetahui seberapa tinggi tingkat pemahamanmu
                 agar proses belajarmu lebih adaptive
               </h1>
               <Button
                 onClick={handleNext}
-                className="mt-12 w-full max-w-[320px] h-[52px] rounded-2xl bg-blue-500 hover:bg-blue-600 text-white font-bold text-sm tracking-widest shadow-lg shadow-blue-500/20 active:scale-[0.98] transition-all"
+                className="mt-12 w-full max-w-[320px] h-[52px] rounded-2xl bg-primary hover:bg-primary/90 text-primary-foreground font-bold text-sm tracking-widest shadow-lg shadow-primary/20 active:scale-[0.98] transition-all"
               >
                 CONTINUE
               </Button>
@@ -135,14 +156,14 @@ export default function Register() {
           {step === 2 && (
             <div className="w-full flex flex-col items-center animate-in fade-in slide-in-from-right-4 duration-500">
               <div className="mb-6 flex flex-col items-center">
-                <div className="w-24 h-24 bg-gray-50 rounded-full flex items-center justify-center mb-4 overflow-hidden border-2 border-white shadow-sm">
+                <div className="w-24 h-24 bg-muted rounded-full flex items-center justify-center mb-4 overflow-hidden border-2 border-border shadow-sm">
                   <img
                     src="/Macot.png"
                     alt="Macot"
                     className="w-24 h-24 object-contain"
                   />
                 </div>
-                <h2 className="text-xl font-bold text-gray-900">
+                <h2 className="text-xl font-bold text-foreground">
                   Now Fill This Field Bellow
                 </h2>
               </div>
@@ -150,7 +171,7 @@ export default function Register() {
               <div className="w-full space-y-6">
                 <div className="space-y-1.5">
                   <label
-                    className="text-xs font-bold text-gray-500 uppercase tracking-wider ml-1"
+                    className="text-xs font-bold text-muted-foreground uppercase tracking-wider ml-1"
                     htmlFor="username"
                   >
                     User name
@@ -160,12 +181,12 @@ export default function Register() {
                     placeholder="Enter your name name"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="h-14 rounded-xl border-gray-200 focus:border-blue-500 transition-all text-sm px-4"
+                    className="h-14 rounded-xl border-border focus:border-primary transition-all text-sm px-4 bg-background text-foreground"
                   />
                 </div>
                 <div className="space-y-1.5">
                   <label
-                    className="text-xs font-bold text-gray-500 uppercase tracking-wider ml-1"
+                    className="text-xs font-bold text-muted-foreground uppercase tracking-wider ml-1"
                     htmlFor="email"
                   >
                     Email
@@ -176,14 +197,14 @@ export default function Register() {
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="h-14 rounded-xl border-gray-200 focus:border-blue-500 transition-all text-sm px-4"
+                    className="h-14 rounded-xl border-border focus:border-primary transition-all text-sm px-4 bg-background text-foreground"
                   />
                 </div>
               </div>
 
               <Button
                 onClick={handleNext}
-                className="mt-12 w-full max-w-[320px] h-[52px] rounded-2xl bg-blue-500 hover:bg-blue-600 text-white font-bold text-sm tracking-widest shadow-lg shadow-blue-500/20 active:scale-[0.98] transition-all"
+                className="mt-12 w-full max-w-[320px] h-[52px] rounded-2xl bg-primary hover:bg-primary/90 text-primary-foreground font-bold text-sm tracking-widest shadow-lg shadow-primary/20 active:scale-[0.98] transition-all"
               >
                 CONTINUE
               </Button>
@@ -193,14 +214,14 @@ export default function Register() {
           {step === 3 && (
             <div className="w-full flex flex-col items-center animate-in fade-in slide-in-from-right-4 duration-500">
               <div className="mb-6 flex flex-col items-center">
-                <div className="w-24 h-24 bg-gray-50 rounded-full flex items-center justify-center mb-4 overflow-hidden border-2 border-white shadow-sm">
+                <div className="w-24 h-24 bg-muted rounded-full flex items-center justify-center mb-4 overflow-hidden border-2 border-border shadow-sm">
                   <img
                     src="/Macot.png"
                     alt="Macot"
                     className="w-24 h-24 object-contain"
                   />
                 </div>
-                <h2 className="text-xl font-bold text-gray-900">
+                <h2 className="text-xl font-bold text-foreground">
                   Now Fill This Field Bellow
                 </h2>
               </div>
@@ -208,7 +229,7 @@ export default function Register() {
               <form onSubmit={handleSubmit} className="w-full space-y-6">
                 <div className="space-y-1.5">
                   <label
-                    className="text-xs font-bold text-gray-500 uppercase tracking-wider ml-1"
+                    className="text-xs font-bold text-muted-foreground uppercase tracking-wider ml-1"
                     htmlFor="password"
                   >
                     Password
@@ -220,12 +241,12 @@ export default function Register() {
                       type={showPassword ? "text" : "password"}
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
-                      className="h-14 rounded-xl border-gray-200 focus:border-blue-500 transition-all text-sm px-4 pr-12"
+                      className="h-14 rounded-xl border-border focus:border-primary transition-all text-sm px-4 pr-12 bg-background text-foreground"
                     />
                     <button
                       type="button"
                       onClick={() => setShowPassword(!showPassword)}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
+                      className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
                     >
                       {showPassword ? (
                         <EyeOff className="w-5 h-5" />
@@ -237,7 +258,7 @@ export default function Register() {
                 </div>
                 <div className="space-y-1.5">
                   <label
-                    className="text-xs font-bold text-gray-500 uppercase tracking-wider ml-1"
+                    className="text-xs font-bold text-muted-foreground uppercase tracking-wider ml-1"
                     htmlFor="confirm-password"
                   >
                     Confrim Password
@@ -249,14 +270,14 @@ export default function Register() {
                       type={showConfirmPassword ? "text" : "password"}
                       value={confirmPassword}
                       onChange={(e) => setConfirmPassword(e.target.value)}
-                      className="h-14 rounded-xl border-gray-200 focus:border-blue-500 transition-all text-sm px-4 pr-12"
+                      className="h-14 rounded-xl border-border focus:border-primary transition-all text-sm px-4 pr-12 bg-background text-foreground"
                     />
                     <button
                       type="button"
                       onClick={() =>
                         setShowConfirmPassword(!showConfirmPassword)
                       }
-                      className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
+                      className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
                     >
                       {showConfirmPassword ? (
                         <EyeOff className="w-5 h-5" />
@@ -269,7 +290,7 @@ export default function Register() {
 
                 <Button
                   type="submit"
-                  className="mt-6 w-full h-[52px] rounded-2xl bg-blue-500 hover:bg-blue-600 text-white font-bold text-sm tracking-widest shadow-lg shadow-blue-500/20 active:scale-[0.98] transition-all"
+                  className="mt-6 w-full h-[52px] rounded-2xl bg-primary hover:bg-primary/90 text-primary-foreground font-bold text-sm tracking-widest shadow-lg shadow-primary/20 active:scale-[0.98] transition-all"
                 >
                   REGISTER
                 </Button>

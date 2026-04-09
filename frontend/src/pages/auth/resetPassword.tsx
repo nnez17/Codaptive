@@ -1,26 +1,18 @@
 "use client";
 
 import { useState } from "react";
-import { Link, useParams, useNavigate } from "@tanstack/react-router";
+import { Link, useParams } from "@tanstack/react-router";
 import { useNotification } from "@/hooks/use-notification";
 import { resetPassword } from "@/services/authService";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { LoadingSpinner } from "@/components/common/loadingSpinner";
-import {
-  Lock,
-  ArrowLeft,
-  CheckCircle2,
-  AlertCircle,
-  Eye,
-  EyeOff,
-} from "lucide-react";
+import { ArrowLeft, CheckCircle2 } from "lucide-react";
 
 export default function ResetPassword() {
   const params = useParams({ strict: false });
   const token = (params as { token?: string }).token;
 
-  const navigate = useNavigate();
   const { notify } = useNotification();
 
   const [password, setPassword] = useState("");
@@ -67,31 +59,31 @@ export default function ResetPassword() {
     <div className="flex-1 flex items-center justify-center p-4 md:p-8 order-2 md:order-1">
       <div className="w-full max-w-[400px]">
         <div className="text-left pb-8">
-          <h1 className="text-2xl md:text-3xl font-bold text-gray-900">
+          <h1 className="text-2xl md:text-3xl font-bold text-foreground">
             {status === "success" ? "All Set!" : "Reset your"}
           </h1>
-          <h2 className="text-xl md:text-lg font-semibold text-gray-900 mt-1">
+          <h2 className="text-xl md:text-lg font-semibold text-foreground mt-1">
             Codaptive Password
           </h2>
         </div>
 
         {status === "success" ? (
           <div className="space-y-6">
-            <div className="bg-gray-50 border border-gray-100 rounded-2xl p-6 text-center">
-              <div className="mx-auto w-16 h-16 bg-white rounded-2xl shadow-sm flex items-center justify-center mb-4">
+            <div className="bg-muted border border-border rounded-2xl p-6 text-center">
+              <div className="mx-auto w-16 h-16 bg-background rounded-2xl shadow-sm flex items-center justify-center mb-4">
                 <CheckCircle2 className="w-8 h-8 text-green-500" />
               </div>
-              <h3 className="text-lg font-bold text-gray-900 mb-2">
+              <h3 className="text-lg font-bold text-foreground mb-2">
                 Password Updated
               </h3>
-              <p className="text-sm text-gray-600 leading-relaxed">
+              <p className="text-sm text-muted-foreground leading-relaxed">
                 Password kamu berhasil diperbarui. Silakan login kembali
                 menggunakan password baru kamu.
               </p>
             </div>
             <Button
               asChild
-              className="w-full h-[46px] rounded-xl text-base font-bold bg-black text-white hover:bg-black/90"
+              className="w-full h-[46px] rounded-xl text-base font-bold bg-primary text-primary-foreground hover:bg-primary/90"
             >
               <Link to="/login">Sign In Now</Link>
             </Button>
@@ -99,7 +91,7 @@ export default function ResetPassword() {
         ) : (
           <form onSubmit={handleSubmit} className="space-y-5">
             <div>
-              <label className="text-sm font-medium text-gray-700 block mb-1.5">
+              <label className="text-sm font-medium text-foreground/80 block mb-1.5">
                 New Password
               </label>
               <Input
@@ -107,13 +99,13 @@ export default function ResetPassword() {
                 placeholder="••••••••"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="rounded-xl h-[46px] border-gray-200"
+                className="rounded-xl h-[46px] border-border bg-background text-foreground"
                 required
               />
             </div>
 
             <div>
-              <label className="text-sm font-medium text-gray-700 block mb-1.5">
+              <label className="text-sm font-medium text-foreground/80 block mb-1.5">
                 Confirm New Password
               </label>
               <Input
@@ -121,7 +113,7 @@ export default function ResetPassword() {
                 placeholder="••••••••"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
-                className="rounded-xl h-[46px] border-gray-200"
+                className="rounded-xl h-[46px] border-border bg-background text-foreground"
                 required
               />
             </div>
@@ -129,7 +121,7 @@ export default function ResetPassword() {
             <Button
               type="submit"
               disabled={status === "loading"}
-              className="w-full h-[46px] rounded-xl text-base font-bold bg-black text-white hover:bg-black/90 mt-2"
+              className="w-full h-[46px] rounded-xl text-base font-bold bg-primary text-primary-foreground hover:bg-primary/90 mt-2"
             >
               {status === "loading" ? (
                 <LoadingSpinner size="sm" label="Updating..." />
@@ -141,7 +133,7 @@ export default function ResetPassword() {
             <Button
               variant="ghost"
               asChild
-              className="w-full h-[46px] rounded-xl text-base font-semibold text-gray-600 hover:bg-gray-50"
+              className="w-full h-[46px] rounded-xl text-base font-semibold text-muted-foreground hover:bg-muted/50"
             >
               <Link
                 to="/login"
@@ -154,9 +146,9 @@ export default function ResetPassword() {
           </form>
         )}
 
-        <div className="mt-8 text-center text-sm text-gray-600">
+        <div className="mt-8 text-center text-sm text-muted-foreground">
           Tiba-tiba ingat password?{" "}
-          <Link to="/login" className="text-black font-bold hover:underline">
+          <Link to="/login" className="text-primary font-bold hover:underline">
             Coba Login
           </Link>
         </div>

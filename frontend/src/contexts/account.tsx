@@ -5,13 +5,30 @@ import { getUserProfile } from "@/services/userService";
 import { LoadingSpinner } from "@/components/common/loadingSpinner";
 
 export type Account = {
-  id: string;
+  _id: string;
   username: string;
   email: string;
   avatar?: string;
-  xp: number;
-  streak: number;
-  level: number;
+  role: "user" | "admin";
+  stats: {
+    xp: number;
+    streak: number;
+    level: number;
+    maxXP: number;
+  };
+  progress: {
+    modules: any[];
+    lessons: any[];
+    levels: any[];
+  };
+  activity: {
+    lastWeek: any[];
+    lastMonth: any[];
+  };
+  settings: {
+    theme: "light" | "dark";
+    notifications: boolean;
+  };
 };
 
 type AccountContextValue = {
@@ -32,7 +49,12 @@ export function AccountProvider({ children }: { children: React.ReactNode }) {
       if (token && !account) {
         try {
           const res = await getUserProfile();
-          setAccount(res.data);
+          if (res.status === "success") {
+            setAccount(res.data);
+          } else {
+            localStorage.removeItem("accessToken");
+            setAccount(null);
+          }
         } catch (err: any) {
           console.error("Session expired or unauthorized");
           localStorage.removeItem("accessToken");
@@ -44,6 +66,7 @@ export function AccountProvider({ children }: { children: React.ReactNode }) {
 
     fetchUserOnRefresh();
   }, []);
+
 
   const value = React.useMemo(() => ({ account, setAccount }), [account]);
 

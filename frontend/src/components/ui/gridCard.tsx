@@ -16,10 +16,10 @@ export function GridCard({
   return (
     <Button
       className={cn(
-        "flex items-center justify-center min-w-12 min-h-12 px-4 py-2 bg-white rounded-xl border-2 text-base font-medium transition-all shadow-sm",
+        "flex items-center justify-center min-w-12 min-h-12 px-4 py-2 bg-card rounded-xl border-2 text-base font-medium transition-all shadow-sm",
         isSelected
-          ? "border-blue-500 text-blue-700 bg-blue-50"
-          : "border-[#E5E5E5] text-gray-800 hover:border-blue-400 hover:bg-gray-50",
+          ? "border-primary text-primary bg-primary/10"
+          : "border-border text-foreground hover:border-primary/50 hover:bg-muted",
         className,
       )}
       {...props}

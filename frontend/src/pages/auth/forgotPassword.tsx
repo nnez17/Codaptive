@@ -49,13 +49,13 @@ export default function ForgotPassword() {
   if (isLoading) return <LoadingSpinner label="Sent link..." />;
 
   return (
-    <div className="min-h-screen bg-[#F9FAFB] flex items-center justify-center p-4">
-      <Card className="w-full max-w-md rounded-2xl border border-gray-100 shadow-sm">
+    <div className="min-h-screen bg-muted/20 flex items-center justify-center p-4">
+      <Card className="w-full max-w-md rounded-2xl border border-border bg-card shadow-sm">
         <CardHeader className="text-center pb-2">
-          <CardTitle className="text-2xl font-bold text-gray-900">
+          <CardTitle className="text-2xl font-bold text-foreground">
             Forgot password?
           </CardTitle>
-          <p className="text-sm text-gray-500 mt-1">
+          <p className="text-sm text-muted-foreground mt-1">
             {sent
               ? "Check your email for a reset link."
               : "Enter your email and we'll send a reset link."}
@@ -77,10 +77,10 @@ export default function ForgotPassword() {
               </Button>
             </form>
           ) : null}
-          <p className="text-center text-sm text-gray-500 mt-6">
+          <p className="text-center text-sm text-muted-foreground mt-6">
             <Link
               to="/login"
-              className="text-blue-600 font-medium hover:text-blue-700"
+              className="text-primary font-medium hover:text-primary/90"
             >
               Back to log in
             </Link>

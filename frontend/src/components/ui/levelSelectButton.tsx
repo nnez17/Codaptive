@@ -19,28 +19,28 @@ export function LevelSelectButton({
   const getStatusStyles = () => {
     switch (status) {
       case "locked":
-        return "bg-[#F5F5F5] text-[#A3A3A3] border-transparent opacity-60 pointer-events-none";
+        return "bg-muted text-muted-foreground/60 border-transparent opacity-60 pointer-events-none";
       case "completed":
-        return "bg-white text-gray-900 border-[#E5E5E5] hover:border-blue-400";
+        return "bg-card text-foreground border-border hover:border-primary/50";
       case "current":
-        return "bg-[#EFF6FF] text-blue-700 border-[#BFDBFE] hover:border-blue-400 shadow-sm";
+        return "bg-primary/10 text-primary border-primary/30 hover:border-primary/60 shadow-sm";
       case "unlocked":
       default:
-        return "bg-white text-gray-900 border-[#E5E5E5] hover:border-blue-400 shadow-sm";
+        return "bg-card text-foreground border-border hover:border-primary/50 shadow-sm";
     }
   };
 
   const getIconContainerStyles = () => {
     switch (status) {
       case "locked":
-        return "bg-gray-200 text-gray-400";
+        return "bg-muted-foreground/20 text-muted-foreground/60";
       case "completed":
-        return "bg-green-100 text-green-600";
+        return "bg-green-500/20 text-green-500";
       case "current":
-        return "bg-blue-100 text-blue-600";
+        return "bg-primary/20 text-primary";
       case "unlocked":
       default:
-        return "bg-gray-100 text-gray-600";
+        return "bg-muted text-muted-foreground";
     }
   };
 

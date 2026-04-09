@@ -17,7 +17,7 @@ export function CodeWindow({
       style={{
         border: "1px solid #262626",
         boxShadow: "0px 25px 50px -12px rgba(0, 0, 0, 0.25)",
-        zIndex: 2,
+        zIndex: 10,
       }}
     >
       {/* Window Bar */}

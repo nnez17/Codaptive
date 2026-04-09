@@ -1,29 +1,83 @@
 "use client";
 
 import { Link, useParams } from "@tanstack/react-router";
+import { useMemo } from "react";
 import { Button } from "@/components/ui/button";
 import { CodeWindow } from "@/components/ui/codeWindow";
-import { X, Heart } from "lucide-react";
+import { X, Heart, BookOpen, Loader2 } from "lucide-react";
+import api from "@/api/axios";
+import { useEffect, useState } from "react";
 
 export default function Lesson() {
   const params = useParams({ strict: false });
   const levelId = params.levelId as string | undefined;
   const lessonId = params.lessonId as string | undefined;
 
+  const [lesson, setLesson] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchLesson = async () => {
+      if (!lessonId) return;
+      try {
+        const res = await api.get(`/lessons/${lessonId}`);
+        setLesson(res.data.data);
+      } catch (err) {
+        console.error("Failed to fetch lesson data:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchLesson();
+  }, [lessonId]);
+
+  const explanations = useMemo(() => {
+    return lesson?.pages?.filter((s: any) => s.type === "explanation") || [];
+  }, [lesson]);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-background flex flex-col items-center justify-center p-6 text-center">
+        <div className="relative mb-8">
+          <div className="w-24 h-24 bg-primary/10 rounded-full flex items-center justify-center animate-pulse">
+            <Loader2 className="w-12 h-12 text-primary animate-spin" />
+          </div>
+          <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-background rounded-lg border-2 border-primary/20 flex items-center justify-center">
+            <BookOpen className="w-4 h-4 text-primary" />
+          </div>
+        </div>
+        <h2 className="text-2xl font-black text-foreground mb-2">Preparing Lesson</h2>
+        <p className="text-muted-foreground font-bold">Fetching the best content for you...</p>
+      </div>
+    );
+  }
+
+  if (!lesson) {
+    return (
+      <div className="min-h-screen bg-background flex flex-col items-center justify-center p-6 text-center">
+        <h2 className="text-2xl font-black text-foreground mb-2">Lesson Not Found</h2>
+        <Button variant="outline" asChild className="mt-4">
+          <Link to="/learn/$levelId" params={{ levelId: levelId ?? "" }}>
+            Go Back
+          </Link>
+        </Button>
+      </div>
+    );
+  }
+
   return (
-    <div className="min-h-screen bg-white">
-      {/* Top Header */}
+    <div className="min-h-screen bg-background">
+
       <div className="max-w-3xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between gap-4">
         <Link
           to="/learn/$levelId"
           params={{ levelId: levelId ?? "" }}
-          className="text-gray-400 hover:text-gray-600 transition-colors"
+          className="text-muted-foreground hover:text-foreground transition-colors"
         >
           <X className="w-5 h-5" strokeWidth={2.5} />
         </Link>
-
-        <div className="flex-1 h-3.5 bg-gray-100 rounded-full overflow-hidden">
-          <div className="h-full bg-blue-500 rounded-full w-[15%]" />
+        <div className="flex-1 h-3.5 bg-muted rounded-full overflow-hidden">
+          <div className="h-full bg-primary rounded-full w-[15%]" />
         </div>
 
         <div className="flex items-center gap-1.5 text-red-500 font-bold">
@@ -32,64 +86,52 @@ export default function Lesson() {
         </div>
       </div>
 
-      {/* Main Content */}
+
       <div className="max-w-2xl mx-auto px-4 sm:px-6 py-8 md:py-12 pb-32">
-        <h1 className="text-2xl font-bold text-center text-gray-900 mb-8">
-          Variable
-        </h1>
-
-        <CodeWindow filename="main.py" className="mb-8">
-          <div className="w-full flex items-center pt-2">
-            <pre className="font-mono text-xs sm:text-base leading-6 sm:leading-7 m-0 bg-transparent p-0 overflow-visible text-[#ABB2BF] font-medium">
-              <span className="text-[#C678DD]">x</span> ={" "}
-              <span className="text-[#D19A66]">10</span>
-              {"\n"}
-              <span className="text-[#C678DD]">y</span> ={" "}
-              <span className="text-[#D19A66]">5</span>
-              {"\n"}
-              print(x * y)
-            </pre>
+        <div className="flex items-center gap-4 mb-8">
+          <div className="p-3 bg-primary/20 rounded-2xl">
+            <BookOpen className="w-8 h-8 text-primary" />
           </div>
-          <div className="w-full border-t border-[#262626] pt-5 mt-4">
-            <span className="text-[#D4D4D4] font-mono text-xs sm:text-base">
-              50
-            </span>
-          </div>
-        </CodeWindow>
-
-        <div className="prose prose-gray max-w-none text-base text-gray-800 space-y-4 font-medium leading-relaxed">
-          <p>
-            Variable di Python sama halnya seperti kamu menyimpan sebuah buku di
-            dalam kotak di rak kamarmu. Bayangkan setiap rak ini merupkan memori
-            dan setiap memori menyimpan nilainya sendiri-sendiri
-          </p>
-          <p>
-            Sebagai contoh:
-            <br />
-            <code>x = 10 -&gt; x </code>adalah rak kotak
-            <br />
-            <code>10 -&gt; 10 </code>adalah buku yang disimpan
-            <br />
-            Jadi, program 1 akan menyimpam angka 12 pada memori{" "}
-            <code className="text-gray-900 bg-gray-100 px-1 py-0.5 rounded">
-              a
-            </code>
-          </p>
+          <h1 className="text-2xl md:text-3xl font-black text-foreground">
+            {lesson.title}
+          </h1>
         </div>
+
+        {explanations.map((section: any, idx: number) => (
+          <div
+            key={idx}
+            className="mb-8 animate-in fade-in slide-in-from-bottom-4 duration-500"
+            style={{ animationDelay: `${idx * 100}ms` }}
+          >
+            <div className="bg-primary/10 border-2 border-primary/20 rounded-3xl p-8 mb-4 text-foreground text-base md:text-lg font-medium leading-relaxed shadow-sm">
+              {section.type === "explanation" && section.content}
+            </div>
+
+            {section.type === "explanation" && section.example && (
+              <div className="flex justify-center">
+                <CodeWindow filename="example.py" className="mb-4">
+                  <pre className="font-mono text-base leading-7 text-[#ABB2BF] font-medium">
+                    {section.example}
+                  </pre>
+                </CodeWindow>
+              </div>
+            )}
+          </div>
+        ))}
       </div>
 
-      {/* Bottom Action Bar */}
-      <div className="fixed bottom-0 left-0 right-0 p-4 border-t bg-white z-40">
+
+      <div className="fixed bottom-0 left-0 right-0 p-4 border-t border-border bg-background z-40">
         <div className="max-w-3xl mx-auto flex justify-between items-center">
           <div className="hidden sm:block">
-            <span className="text-xs font-black text-gray-400 tracking-widest uppercase">
+            <span className="text-xs font-black text-muted-foreground/60 tracking-widest uppercase">
               SO YOU GET IT?
             </span>
           </div>
           <div className="flex gap-4 w-full sm:w-auto">
             <Button
               variant="ghost"
-              className="hidden sm:flex text-gray-400 hover:text-gray-600 font-bold px-6"
+              className="hidden sm:flex text-muted-foreground hover:text-foreground font-bold px-6"
               asChild
             >
               <Link to="/learn/$levelId" params={{ levelId: levelId ?? "" }}>

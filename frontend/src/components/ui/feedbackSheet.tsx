@@ -23,8 +23,8 @@ export function FeedbackSheet({
   return (
     <div
       className={cn(
-        "fixed bottom-0 left-0 right-0 z-50 animate-in slide-in-from-bottom duration-300",
-        isCorrect ? "bg-[#EBFAEA]" : "bg-[#FDF2F2]",
+        "fixed bottom-0 left-0 right-0 z-50 animate-in slide-in-from-bottom duration-300 border-t border-border",
+        isCorrect ? "bg-green-500/10" : "bg-destructive/10",
         className,
       )}
       {...props}
@@ -33,21 +33,20 @@ export function FeedbackSheet({
         <div className="flex items-center gap-4 w-full sm:w-auto">
           <div
             className={cn(
-              "w-12 h-12 rounded-full flex items-center justify-center shrink-0",
-              isCorrect ? "bg-white" : "bg-white",
+              "w-12 h-12 rounded-full flex items-center justify-center shrink-0 bg-background border border-border shadow-sm",
             )}
           >
             {isCorrect ? (
-              <Check className="w-6 h-6 text-[#4CAF50] stroke-[4px]" />
+              <Check className="w-6 h-6 text-green-500 stroke-[4px]" />
             ) : (
-              <X className="w-6 h-6 text-[#F44336] stroke-[4px]" />
+              <X className="w-6 h-6 text-destructive stroke-[4px]" />
             )}
           </div>
           <div className="flex flex-col">
             <h3
               className={cn(
                 "text-xl font-black",
-                isCorrect ? "text-[#4CAF50]" : "text-[#F44336]",
+                isCorrect ? "text-green-500" : "text-destructive",
               )}
             >
               {isCorrect ? "Correct" : "Incorrect"}
@@ -56,7 +55,7 @@ export function FeedbackSheet({
               <p
                 className={cn(
                   "text-sm font-bold",
-                  isCorrect ? "text-[#4CAF50]/80" : "text-[#F44336]/80",
+                  isCorrect ? "text-green-500/80" : "text-destructive/80",
                 )}
               >
                 {message}
@@ -67,7 +66,7 @@ export function FeedbackSheet({
 
         <Button
           onClick={onContinue}
-          className="w-full sm:w-[180px] h-12 rounded-xl bg-blue-500 hover:bg-blue-600 text-white font-black text-sm tracking-widest shadow-lg shadow-blue-500/20 active:scale-[0.98] transition-all"
+          className="w-full sm:w-[180px] h-12 rounded-xl bg-primary hover:bg-primary/90 text-primary-foreground font-black text-sm tracking-widest shadow-lg shadow-primary/20 active:scale-[0.98] transition-all"
         >
           {continueText}
         </Button>
