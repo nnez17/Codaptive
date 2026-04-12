@@ -1,0 +1,173 @@
+{
+  "id": "lesson-2",
+  "title": "Variable",
+  "level": "beginner",
+  "pages": [
+    {
+      "type": "explanation",
+      "content": "Variable digunakan untuk menyimpan nilai agar bisa digunakan kembali. Nilai bisa berupa angka, teks, atau data lainnya.",
+      "example": "x = 5\nprint(x)"
+    },
+    {
+      "type": "quiz",
+      "quizType": "mcq",
+      "question": {
+        "id": "q1",
+        "type": "mcq",
+        "question": "What will be the output?",
+        "code": "x = 5\nprint(x)",
+        "options": [
+          "x",
+          "5",
+          "\"5\"",
+          "error"
+        ],
+        "answer": "5",
+        "correctFeedback": "Variable x menyimpan nilai 5 dan print(x) akan menampilkan nilainya.",
+        "wrongFeedback": "print(x) menampilkan isi dari variable, bukan nama variable."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "fill",
+      "question": {
+        "id": "q2",
+        "type": "fill",
+        "instruction": "Tambahkan dua variable",
+        "code": "x = 2\ny = 3\nprint(x __ y)",
+        "options": [
+          "+",
+          "*",
+          "-",
+          "/"
+        ],
+        "answer": "+",
+        "expectedOutput": "5",
+        "correctFeedback": "Operator + digunakan untuk menjumlahkan dua nilai.",
+        "wrongFeedback": "Coba gunakan operator yang menghasilkan 2 + 3 = 5."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "mcq",
+      "question": {
+        "id": "q3",
+        "type": "mcq",
+        "question": "Output?",
+        "code": "x = 10\ny = x\nx = 1\nprint(y)",
+        "options": [
+          "1",
+          "10",
+          "x",
+          "error"
+        ],
+        "answer": "10",
+        "correctFeedback": "y menyimpan nilai x saat assignment pertama (10), dan tidak berubah saat x diubah.",
+        "wrongFeedback": "y tidak ikut berubah karena hanya menyimpan nilai awal dari x."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "fill",
+      "question": {
+        "id": "q4",
+        "type": "fill",
+        "instruction": "Tampilkan variable",
+        "code": "name = \"Wowo\"\nprint(__)",
+        "options": [
+          "name",
+          "\"Wowo\"",
+          "x",
+          "y"
+        ],
+        "answer": "name",
+        "expectedOutput": "Wowo",
+        "correctFeedback": "Untuk menampilkan isi variable, gunakan nama variablenya.",
+        "wrongFeedback": "Gunakan nama variable, bukan string literal."
+      }
+    },
+    {
+      "type": "explanation",
+      "content": "Nilai variable bisa diubah. Python selalu menggunakan nilai terakhir yang disimpan.",
+      "example": "x = 5\nx = 10\nprint(x)"
+    },
+    {
+      "type": "quiz",
+      "quizType": "fill",
+      "question": {
+        "id": "q5",
+        "type": "fill",
+        "instruction": "Ubah nilai",
+        "code": "x = 5\nx = __\nprint(x)",
+        "options": [
+          "10",
+          "5",
+          "x",
+          "0"
+        ],
+        "answer": "10",
+        "expectedOutput": "10",
+        "correctFeedback": "Nilai variable bisa diganti dengan nilai baru.",
+        "wrongFeedback": "Untuk mengubah nilai, assign nilai baru ke variable."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "mcq",
+      "question": {
+        "id": "q6",
+        "type": "mcq",
+        "question": "Value x?",
+        "code": "x = 3\nx += 2",
+        "options": [
+          "3",
+          "5",
+          "6",
+          "error"
+        ],
+        "answer": "5",
+        "correctFeedback": "x += 2 sama dengan x = x + 2.",
+        "wrongFeedback": "Operator += menambahkan nilai ke variable."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "fill",
+      "question": {
+        "id": "q7",
+        "type": "fill",
+        "instruction": "Simpan nilai lama",
+        "code": "x = 1\ny = __\nx = 2\nprint(y)",
+        "options": [
+          "x",
+          "1",
+          "2",
+          "0"
+        ],
+        "answer": "x",
+        "expectedOutput": "1",
+        "correctFeedback": "y menyimpan nilai x sebelum berubah.",
+        "wrongFeedback": "Pastikan mengambil nilai x sebelum diubah."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "mcq",
+      "question": {
+        "id": "q8",
+        "type": "mcq",
+        "question": "Output?",
+        "code": "x = 5\ny = x\ny = 10\nprint(x)",
+        "options": [
+          "10",
+          "5",
+          "error",
+          "None"
+        ],
+        "answer": "5",
+        "correctFeedback": "x tidak berubah karena y adalah variable terpisah.",
+        "wrongFeedback": "Perubahan pada y tidak mempengaruhi x."
+      }
+    }
+  ]
+}

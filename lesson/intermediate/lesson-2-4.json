@@ -1,0 +1,173 @@
+{
+  "id": "int-lesson-4",
+  "title": "Nested Loop & Logic",
+  "level": "intermediate",
+  "pages": [
+    {
+      "type": "explanation",
+      "content": "Nested loop adalah loop di dalam loop. Biasanya digunakan untuk memproses data bertingkat seperti matriks atau membuat pola.",
+      "example": "for i in range(2):\n    for j in range(2):\n        print(i, j)"
+    },
+    {
+      "type": "quiz",
+      "quizType": "mcq",
+      "question": {
+        "id": "q1",
+        "type": "mcq",
+        "question": "Apa output dari kode berikut?",
+        "code": "for i in range(2):\n    for j in range(2):\n        print(i, j)",
+        "options": [
+          "0 0\n0 1\n1 0\n1 1",
+          "0 1\n1 0",
+          "0 0\n1 1",
+          "error"
+        ],
+        "answer": "0 0\n0 1\n1 0\n1 1",
+        "correctFeedback": "Loop luar (i) akan menjalankan loop dalam (j) sepenuhnya setiap iterasi.",
+        "wrongFeedback": "Loop dalam akan berjalan penuh untuk setiap nilai i."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "fill",
+      "question": {
+        "id": "q2",
+        "type": "fill",
+        "instruction": "Lengkapi nested loop",
+        "code": "for i in range(2):\n    for j __ range(2):\n        print(j)",
+        "options": [
+          "in",
+          "of",
+          "=",
+          "=="
+        ],
+        "answer": "in",
+        "expectedOutput": "0\n1\n0\n1",
+        "correctFeedback": "Sintaks nested loop tetap menggunakan 'in'.",
+        "wrongFeedback": "Gunakan keyword 'in' untuk loop."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "mcq",
+      "question": {
+        "id": "q3",
+        "type": "mcq",
+        "question": "Apa output dari kode berikut?",
+        "code": "for i in range(2):\n    print(\"*\")",
+        "options": [
+          "*\n*",
+          "* *",
+          "2",
+          "error"
+        ],
+        "answer": "*\n*",
+        "correctFeedback": "Loop berjalan 2 kali, mencetak * setiap iterasi.",
+        "wrongFeedback": "print dipanggil setiap iterasi."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "fill",
+      "question": {
+        "id": "q4",
+        "type": "fill",
+        "instruction": "Buat loop dalam",
+        "code": "for i in range(2):\n    for j in __:\n        print(\"*\")",
+        "options": [
+          "range(2)",
+          "2",
+          "[2]",
+          "\"2\""
+        ],
+        "answer": "range(2)",
+        "expectedOutput": "*\n*\n*\n*",
+        "correctFeedback": "range(2) menghasilkan 2 iterasi di dalam loop.",
+        "wrongFeedback": "Loop membutuhkan iterable seperti range()."
+      }
+    },
+    {
+      "type": "explanation",
+      "content": "Nested loop sering digunakan untuk membuat pola. Kita juga bisa menambahkan kondisi di dalam loop untuk mengontrol output.",
+      "example": "for i in range(3):\n    for j in range(i+1):\n        print(\"*\", end=\"\")\n    print()"
+    },
+    {
+      "type": "quiz",
+      "quizType": "mcq",
+      "question": {
+        "id": "q5",
+        "type": "mcq",
+        "question": "Apa output dari kode berikut?",
+        "code": "for i in range(3):\n    for j in range(i+1):\n        print(\"*\", end=\"\")\n    print()",
+        "options": [
+          "*\n**\n***",
+          "***\n**\n*",
+          "* * *",
+          "error"
+        ],
+        "answer": "*\n**\n***",
+        "correctFeedback": "Setiap baris bertambah jumlah bintang.",
+        "wrongFeedback": "Loop dalam bergantung pada nilai i."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "fill",
+      "question": {
+        "id": "q6",
+        "type": "fill",
+        "instruction": "Tambahkan kondisi agar hanya mencetak angka genap",
+        "code": "for i in range(5):\n    if i __ 2 == 0:\n        print(i)",
+        "options": [
+          "%",
+          "//",
+          "+",
+          "*"
+        ],
+        "answer": "%",
+        "expectedOutput": "0\n2\n4",
+        "correctFeedback": "Operator % digunakan untuk cek sisa pembagian.",
+        "wrongFeedback": "Gunakan % untuk mengecek genap/ganjil."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "fill",
+      "question": {
+        "id": "q7",
+        "type": "fill",
+        "instruction": "Lengkapi kondisi",
+        "code": "for i in range(5):\n    if i % 2 __ 0:\n        print(i)",
+        "options": [
+          "==",
+          ">",
+          "<",
+          "!="
+        ],
+        "answer": "==",
+        "expectedOutput": "0\n2\n4",
+        "correctFeedback": "== digunakan untuk membandingkan.",
+        "wrongFeedback": "Gunakan == untuk kondisi yang tepat."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "mcq",
+      "question": {
+        "id": "q8",
+        "type": "mcq",
+        "question": "Nested loop biasanya digunakan untuk?",
+        "code": "for i in range(3):\n    for j in range(3):\n        print(i, j)",
+        "options": [
+          "Data bertingkat / pola",
+          "Menyimpan data",
+          "Menghapus data",
+          "Membuat variable"
+        ],
+        "answer": "Data bertingkat / pola",
+        "correctFeedback": "Nested loop sering digunakan untuk pola dan data bertingkat.",
+        "wrongFeedback": "Nested loop digunakan untuk iterasi bertingkat."
+      }
+    }
+  ]
+}

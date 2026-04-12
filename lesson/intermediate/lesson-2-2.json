@@ -1,0 +1,173 @@
+{
+  "id": "int-lesson-2",
+  "title": "Dictionary",
+  "level": "intermediate",
+  "pages": [
+    {
+      "type": "explanation",
+      "content": "Dictionary digunakan untuk menyimpan data dalam bentuk pasangan key dan value. Kita bisa mengakses value menggunakan key.",
+      "example": "data = {\"nama\": \"Han\", \"umur\": 17}\nprint(data[\"nama\"])  # Output: Han"
+    },
+    {
+      "type": "quiz",
+      "quizType": "mcq",
+      "question": {
+        "id": "q1",
+        "type": "mcq",
+        "question": "Apa output dari kode berikut?",
+        "code": "data = {\"a\": 1, \"b\": 2}\nprint(data[\"b\"])",
+        "options": [
+          "1",
+          "2",
+          "b",
+          "error"
+        ],
+        "answer": "2",
+        "correctFeedback": "Key \"b\" memiliki value 2.",
+        "wrongFeedback": "Gunakan key untuk mengambil value."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "fill",
+      "question": {
+        "id": "q2",
+        "type": "fill",
+        "instruction": "Ambil value dari key \"nama\"",
+        "code": "data = {\"nama\": \"Han\"}\nprint(data[__])",
+        "options": [
+          "\"nama\"",
+          "nama",
+          "\"Han\"",
+          "Han"
+        ],
+        "answer": "\"nama\"",
+        "expectedOutput": "Han",
+        "correctFeedback": "Key harus ditulis sebagai string.",
+        "wrongFeedback": "Key harus sesuai dan menggunakan tanda kutip."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "mcq",
+      "question": {
+        "id": "q3",
+        "type": "mcq",
+        "question": "Apa output dari kode berikut?",
+        "code": "data = {\"x\": 10}\nprint(len(data))",
+        "options": [
+          "0",
+          "1",
+          "10",
+          "error"
+        ],
+        "answer": "1",
+        "correctFeedback": "Dictionary memiliki 1 pasangan key-value.",
+        "wrongFeedback": "len() menghitung jumlah pasangan key-value."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "fill",
+      "question": {
+        "id": "q4",
+        "type": "fill",
+        "instruction": "Tambahkan key \"b\" dengan value 2",
+        "code": "data = {\"a\": 1}\ndata[__] = 2\nprint(data)",
+        "options": [
+          "\"b\"",
+          "b",
+          "\"2\"",
+          "2"
+        ],
+        "answer": "\"b\"",
+        "expectedOutput": "{'a': 1, 'b': 2}",
+        "correctFeedback": "Menambahkan key baru dengan assignment.",
+        "wrongFeedback": "Key harus berupa string \"b\"."
+      }
+    },
+    {
+      "type": "explanation",
+      "content": "Value dalam dictionary bisa diubah, dan kita juga bisa mengecek apakah suatu key ada di dalam dictionary.",
+      "example": "data = {\"a\": 1}\ndata[\"a\"] = 5\nprint(data)  # {'a': 5}"
+    },
+    {
+      "type": "quiz",
+      "quizType": "fill",
+      "question": {
+        "id": "q5",
+        "type": "fill",
+        "instruction": "Ubah value key \"a\" menjadi 10",
+        "code": "data = {\"a\": 1}\ndata[__] = 10\nprint(data)",
+        "options": [
+          "\"a\"",
+          "a",
+          "\"10\"",
+          "10"
+        ],
+        "answer": "\"a\"",
+        "expectedOutput": "{'a': 10}",
+        "correctFeedback": "Value diubah menggunakan key.",
+        "wrongFeedback": "Gunakan key yang sesuai."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "mcq",
+      "question": {
+        "id": "q6",
+        "type": "mcq",
+        "question": "Apa output dari kode berikut?",
+        "code": "data = {\"a\": 1}\ndata[\"a\"] = 5\nprint(data[\"a\"])",
+        "options": [
+          "1",
+          "5",
+          "a",
+          "error"
+        ],
+        "answer": "5",
+        "correctFeedback": "Value berhasil diubah menjadi 5.",
+        "wrongFeedback": "Value lama sudah diganti."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "fill",
+      "question": {
+        "id": "q7",
+        "type": "fill",
+        "instruction": "Cek apakah key \"a\" ada",
+        "code": "data = {\"a\": 1}\nprint(__ in data)",
+        "options": [
+          "\"a\"",
+          "a",
+          "1",
+          "\"1\""
+        ],
+        "answer": "\"a\"",
+        "expectedOutput": "True",
+        "correctFeedback": "Operator 'in' digunakan untuk mengecek key.",
+        "wrongFeedback": "Gunakan key \"a\" untuk pengecekan."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "mcq",
+      "question": {
+        "id": "q8",
+        "type": "mcq",
+        "question": "Apa output dari kode berikut?",
+        "code": "data = {\"a\": 1, \"b\": 2}\ndel data[\"a\"]\nprint(data)",
+        "options": [
+          "{'a': 1, 'b': 2}",
+          "{'b': 2}",
+          "{'a': 1}",
+          "error"
+        ],
+        "answer": "{'b': 2}",
+        "correctFeedback": "Key \"a\" dihapus dari dictionary.",
+        "wrongFeedback": "del digunakan untuk menghapus key."
+      }
+    }
+  ]
+}

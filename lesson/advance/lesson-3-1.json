@@ -1,0 +1,173 @@
+{
+  "id": "adv-lesson-1",
+  "title": "Advanced Iteration",
+  "level": "advanced",
+  "pages": [
+    {
+      "type": "explanation",
+      "content": "Iterasi tidak hanya sekadar loop biasa. Kita bisa memproses data dengan kondisi tertentu, seperti mengambil hanya angka tertentu dari list.",
+      "example": "data = [1,2,3,4]\nfor x in data:\n    if x % 2 == 0:\n        print(x)  # 2, 4"
+    },
+    {
+      "type": "quiz",
+      "quizType": "mcq",
+      "question": {
+        "id": "q1",
+        "type": "mcq",
+        "question": "Apa output dari kode berikut?",
+        "code": "data = [1,2,3,4]\nfor x in data:\n    if x % 2 == 0:\n        print(x)",
+        "options": [
+          "1 2 3 4",
+          "2 4",
+          "1 3",
+          "error"
+        ],
+        "answer": "2 4",
+        "correctFeedback": "Hanya angka genap yang dicetak.",
+        "wrongFeedback": "Perhatikan kondisi x % 2 == 0."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "fill",
+      "question": {
+        "id": "q2",
+        "type": "fill",
+        "instruction": "Ambil angka ganjil",
+        "code": "data = [1,2,3,4]\nfor x in data:\n    if x __ 2 != 0:\n        print(x)",
+        "options": [
+          "%",
+          "//",
+          "+",
+          "*"
+        ],
+        "answer": "%",
+        "expectedOutput": "1\n3",
+        "correctFeedback": "% digunakan untuk mengecek sisa pembagian.",
+        "wrongFeedback": "Gunakan operator modulus (%)."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "mcq",
+      "question": {
+        "id": "q3",
+        "type": "mcq",
+        "question": "Apa output dari kode berikut?",
+        "code": "data = [2,4,6]\ntotal = 0\nfor x in data:\n    total += x\nprint(total)",
+        "options": [
+          "6",
+          "12",
+          "24",
+          "error"
+        ],
+        "answer": "12",
+        "correctFeedback": "2 + 4 + 6 = 12.",
+        "wrongFeedback": "Loop menjumlahkan semua elemen."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "fill",
+      "question": {
+        "id": "q4",
+        "type": "fill",
+        "instruction": "Jumlahkan hanya angka > 2",
+        "code": "data = [1,2,3,4]\ntotal = 0\nfor x in data:\n    if x __ 2:\n        total += x\nprint(total)",
+        "options": [
+          ">",
+          "<",
+          "==",
+          "!="
+        ],
+        "answer": ">",
+        "expectedOutput": "7",
+        "correctFeedback": "Hanya 3 dan 4 yang dijumlahkan.",
+        "wrongFeedback": "Gunakan kondisi yang tepat."
+      }
+    },
+    {
+      "type": "explanation",
+      "content": "Kita juga bisa membuat list baru berdasarkan kondisi tertentu, ini disebut filtering atau transformasi data.",
+      "example": "data = [1,2,3,4]\nresult = []\nfor x in data:\n    if x > 2:\n        result.append(x)\nprint(result)  # [3,4]"
+    },
+    {
+      "type": "quiz",
+      "quizType": "fill",
+      "question": {
+        "id": "q5",
+        "type": "fill",
+        "instruction": "Tambahkan ke list baru",
+        "code": "result = []\nfor x in [1,2,3]:\n    result.__ (x)\nprint(result)",
+        "options": [
+          "append",
+          "add",
+          "push",
+          "insert"
+        ],
+        "answer": "append",
+        "expectedOutput": "[1,2,3]",
+        "correctFeedback": "append() menambahkan ke list.",
+        "wrongFeedback": "Gunakan append()."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "mcq",
+      "question": {
+        "id": "q6",
+        "type": "mcq",
+        "question": "Apa output dari kode berikut?",
+        "code": "data = [1,2,3]\nres = []\nfor x in data:\n    if x > 1:\n        res.append(x)\nprint(res)",
+        "options": [
+          "[1,2,3]",
+          "[2,3]",
+          "[1]",
+          "error"
+        ],
+        "answer": "[2,3]",
+        "correctFeedback": "Hanya angka > 1 yang masuk.",
+        "wrongFeedback": "Perhatikan kondisi x > 1."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "fill",
+      "question": {
+        "id": "q7",
+        "type": "fill",
+        "instruction": "Ambil angka genap",
+        "code": "data = [1,2,3,4]\nres = []\nfor x in data:\n    if x % 2 == 0:\n        res.__ (x)\nprint(res)",
+        "options": [
+          "append",
+          "add",
+          "push",
+          "insert"
+        ],
+        "answer": "append",
+        "expectedOutput": "[2,4]",
+        "correctFeedback": "Hanya angka genap ditambahkan.",
+        "wrongFeedback": "Gunakan append()."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "mcq",
+      "question": {
+        "id": "q8",
+        "type": "mcq",
+        "question": "Tujuan filtering adalah?",
+        "code": "if x > 2:",
+        "options": [
+          "Mengambil data tertentu",
+          "Menghapus semua data",
+          "Mengubah tipe data",
+          "Menghentikan program"
+        ],
+        "answer": "Mengambil data tertentu",
+        "correctFeedback": "Filtering digunakan untuk memilih data tertentu.",
+        "wrongFeedback": "Filtering bukan untuk menghapus semua data."
+      }
+    }
+  ]
+}

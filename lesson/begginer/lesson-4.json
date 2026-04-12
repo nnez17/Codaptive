@@ -1,0 +1,173 @@
+{
+  "id": "lesson-4",
+  "title": "Operator & Logika",
+  "level": "beginner",
+  "pages": [
+    {
+      "type": "explanation",
+      "content": "Operator digunakan untuk melakukan perhitungan. Python memiliki aturan prioritas, dimana perkalian (*) dan pembagian (/) dikerjakan terlebih dahulu sebelum penjumlahan (+) dan pengurangan (-).",
+      "example": "print(2 + 3 * 2)  # hasilnya 8, bukan 10"
+    },
+    {
+      "type": "quiz",
+      "quizType": "mcq",
+      "question": {
+        "id": "q1",
+        "type": "mcq",
+        "question": "Apa output dari kode berikut?",
+        "code": "print(2 + 3 * 2)",
+        "options": [
+          "10",
+          "8",
+          "12",
+          "error"
+        ],
+        "answer": "8",
+        "correctFeedback": "Perkalian dilakukan terlebih dahulu (3 × 2 = 6), kemudian ditambah 2 menjadi 8.",
+        "wrongFeedback": "Ingat, perkalian memiliki prioritas lebih tinggi daripada penjumlahan."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "fill",
+      "question": {
+        "id": "q2",
+        "type": "fill",
+        "instruction": "Lengkapi agar hasilnya 3",
+        "code": "print(5 __ 2)",
+        "options": [
+          "-",
+          "+",
+          "*",
+          "/"
+        ],
+        "answer": "-",
+        "expectedOutput": "3",
+        "correctFeedback": "5 - 2 = 3.",
+        "wrongFeedback": "Pilih operator yang menghasilkan nilai 3."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "mcq",
+      "question": {
+        "id": "q3",
+        "type": "mcq",
+        "question": "Apa output dari kode berikut?",
+        "code": "print(10 / 2)",
+        "options": [
+          "5",
+          "5.0",
+          "2",
+          "error"
+        ],
+        "answer": "5.0",
+        "correctFeedback": "Operator / menghasilkan tipe data float (5.0).",
+        "wrongFeedback": "Pembagian dengan / selalu menghasilkan angka desimal (float)."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "fill",
+      "question": {
+        "id": "q4",
+        "type": "fill",
+        "instruction": "Lengkapi agar hasilnya 10",
+        "code": "print(2 __ 3 + 4)",
+        "options": [
+          "*",
+          "+",
+          "-",
+          "/"
+        ],
+        "answer": "*",
+        "expectedOutput": "10",
+        "correctFeedback": "2 × 3 = 6, lalu 6 + 4 = 10.",
+        "wrongFeedback": "Perhatikan urutan operasi (perkalian dulu, lalu penjumlahan)."
+      }
+    },
+    {
+      "type": "explanation",
+      "content": "Operator logika digunakan untuk membandingkan kondisi dan menghasilkan nilai True atau False. Operator yang sering digunakan adalah and, or, dan not.",
+      "example": "print(True and False)  # False"
+    },
+    {
+      "type": "quiz",
+      "quizType": "fill",
+      "question": {
+        "id": "q5",
+        "type": "fill",
+        "instruction": "Lengkapi agar hasilnya False",
+        "code": "print(True __ False)",
+        "options": [
+          "and",
+          "or",
+          "not",
+          "=="
+        ],
+        "answer": "and",
+        "expectedOutput": "False",
+        "correctFeedback": "True and False menghasilkan False karena keduanya harus True.",
+        "wrongFeedback": "Operator and hanya bernilai True jika kedua kondisi True."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "mcq",
+      "question": {
+        "id": "q6",
+        "type": "mcq",
+        "question": "Apa output dari kode berikut?",
+        "code": "print(True or False)",
+        "options": [
+          "False",
+          "True",
+          "error",
+          "None"
+        ],
+        "answer": "True",
+        "correctFeedback": "Operator or akan menghasilkan True jika salah satu bernilai True.",
+        "wrongFeedback": "True or False tetap menghasilkan True."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "fill",
+      "question": {
+        "id": "q7",
+        "type": "fill",
+        "instruction": "Lengkapi agar hasilnya True",
+        "code": "print(5 __ 3)",
+        "options": [
+          ">",
+          "<",
+          "==",
+          "!="
+        ],
+        "answer": ">",
+        "expectedOutput": "True",
+        "correctFeedback": "5 lebih besar dari 3, sehingga hasilnya True.",
+        "wrongFeedback": "Gunakan operator perbandingan yang sesuai."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "mcq",
+      "question": {
+        "id": "q8",
+        "type": "mcq",
+        "question": "Apa output dari kode berikut?",
+        "code": "print(False or False)",
+        "options": [
+          "True",
+          "False",
+          "error",
+          "None"
+        ],
+        "answer": "False",
+        "correctFeedback": "Kedua nilai False, sehingga hasilnya False.",
+        "wrongFeedback": "Operator or butuh minimal satu True agar hasilnya True."
+      }
+    }
+  ]
+}

@@ -1,0 +1,173 @@
+{
+  "id": "adv-lesson-2",
+  "title": "Complex Logic",
+  "level": "advanced",
+  "pages": [
+    {
+      "type": "explanation",
+      "content": "Dalam program nyata, kita sering menggunakan lebih dari satu kondisi. Operator seperti and dan or digunakan untuk menggabungkan beberapa kondisi.",
+      "example": "x = 7\nif x > 5 and x < 10:\n    print(\"OK\")"
+    },
+    {
+      "type": "quiz",
+      "quizType": "mcq",
+      "question": {
+        "id": "q1",
+        "type": "mcq",
+        "question": "Apa output dari kode berikut?",
+        "code": "x = 7\nif x > 5 and x < 10:\n    print(\"OK\")",
+        "options": [
+          "OK",
+          "Tidak ada output",
+          "Error",
+          "False"
+        ],
+        "answer": "OK",
+        "correctFeedback": "Kedua kondisi terpenuhi, sehingga hasilnya True.",
+        "wrongFeedback": "Operator 'and' harus kedua kondisi True."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "fill",
+      "question": {
+        "id": "q2",
+        "type": "fill",
+        "instruction": "Lengkapi kondisi agar menghasilkan OK",
+        "code": "x = 8\nif x > 5 __ x < 10:\n    print(\"OK\")",
+        "options": [
+          "and",
+          "or",
+          "not",
+          "=="
+        ],
+        "answer": "and",
+        "expectedOutput": "OK",
+        "correctFeedback": "Kedua kondisi harus terpenuhi.",
+        "wrongFeedback": "Gunakan 'and' untuk menggabungkan kondisi."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "mcq",
+      "question": {
+        "id": "q3",
+        "type": "mcq",
+        "question": "Apa output dari kode berikut?",
+        "code": "x = 3\nif x > 5 or x < 10:\n    print(\"YES\")",
+        "options": [
+          "YES",
+          "Tidak ada output",
+          "Error",
+          "False"
+        ],
+        "answer": "YES",
+        "correctFeedback": "Salah satu kondisi True sudah cukup.",
+        "wrongFeedback": "Operator 'or' cukup satu kondisi True."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "fill",
+      "question": {
+        "id": "q4",
+        "type": "fill",
+        "instruction": "Gunakan operator yang tepat",
+        "code": "x = 2\nif x > 5 __ x < 1:\n    print(\"OK\")",
+        "options": [
+          "and",
+          "or",
+          "not",
+          "=="
+        ],
+        "answer": "or",
+        "expectedOutput": "Tidak ada output",
+        "correctFeedback": "Kedua kondisi False, jadi tidak ada output.",
+        "wrongFeedback": "Gunakan 'or', tapi tetap tidak memenuhi kondisi."
+      }
+    },
+    {
+      "type": "explanation",
+      "content": "Kita juga bisa membuat keputusan bertingkat menggunakan beberapa kondisi. Ini sering digunakan dalam sistem seperti login, validasi, atau filtering data.",
+      "example": "umur = 18\nif umur >= 18:\n    print(\"Dewasa\")\nelse:\n    print(\"Anak\")"
+    },
+    {
+      "type": "quiz",
+      "quizType": "mcq",
+      "question": {
+        "id": "q5",
+        "type": "mcq",
+        "question": "Apa output dari kode berikut?",
+        "code": "umur = 17\nif umur >= 18:\n    print(\"Dewasa\")\nelse:\n    print(\"Anak\")",
+        "options": [
+          "Dewasa",
+          "Anak",
+          "Error",
+          "Tidak ada output"
+        ],
+        "answer": "Anak",
+        "correctFeedback": "17 < 18, jadi masuk ke else.",
+        "wrongFeedback": "Kondisi if tidak terpenuhi."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "fill",
+      "question": {
+        "id": "q6",
+        "type": "fill",
+        "instruction": "Lengkapi kondisi",
+        "code": "nilai = 80\nif nilai __ 75:\n    print(\"Lulus\")",
+        "options": [
+          ">=",
+          "<=",
+          "==",
+          "!="
+        ],
+        "answer": ">=",
+        "expectedOutput": "Lulus",
+        "correctFeedback": "80 >= 75 berarti lulus.",
+        "wrongFeedback": "Gunakan operator yang sesuai."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "fill",
+      "question": {
+        "id": "q7",
+        "type": "fill",
+        "instruction": "Tambahkan kondisi kedua",
+        "code": "nilai = 85\nif nilai > 70 __ nilai < 90:\n    print(\"OK\")",
+        "options": [
+          "and",
+          "or",
+          "not",
+          "=="
+        ],
+        "answer": "and",
+        "expectedOutput": "OK",
+        "correctFeedback": "Nilai berada di antara 70 dan 90.",
+        "wrongFeedback": "Gunakan 'and' untuk range."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "mcq",
+      "question": {
+        "id": "q8",
+        "type": "mcq",
+        "question": "Complex logic digunakan untuk?",
+        "code": "if x > 5 and x < 10:",
+        "options": [
+          "Keputusan berdasarkan banyak kondisi",
+          "Menyimpan data",
+          "Menghapus data",
+          "Membuat loop"
+        ],
+        "answer": "Keputusan berdasarkan banyak kondisi",
+        "correctFeedback": "Complex logic digunakan untuk decision making.",
+        "wrongFeedback": "Ini bukan untuk loop atau storage."
+      }
+    }
+  ]
+}

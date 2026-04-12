@@ -1,0 +1,173 @@
+{
+  "id": "int-lesson-5",
+  "title": "Slicing",
+  "level": "intermediate",
+  "pages": [
+    {
+      "type": "explanation",
+      "content": "Slicing digunakan untuk mengambil sebagian data dari string atau list. Formatnya adalah [start:end], dimana start termasuk, end tidak termasuk.",
+      "example": "text = \"python\"\nprint(text[0:2])  # py"
+    },
+    {
+      "type": "quiz",
+      "quizType": "mcq",
+      "question": {
+        "id": "q1",
+        "type": "mcq",
+        "question": "Apa output dari kode berikut?",
+        "code": "text = \"python\"\nprint(text[0:2])",
+        "options": [
+          "py",
+          "pt",
+          "tho",
+          "error"
+        ],
+        "answer": "py",
+        "correctFeedback": "Index 0 sampai sebelum 2 menghasilkan 'py'.",
+        "wrongFeedback": "Index akhir tidak ikut diambil."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "fill",
+      "question": {
+        "id": "q2",
+        "type": "fill",
+        "instruction": "Ambil 'yth'",
+        "code": "text = \"python\"\nprint(text[__])",
+        "options": [
+          "1:4",
+          "0:3",
+          "2:5",
+          "1:3"
+        ],
+        "answer": "1:4",
+        "expectedOutput": "yth",
+        "correctFeedback": "Index 1 sampai sebelum 4 menghasilkan 'yth'.",
+        "wrongFeedback": "Perhatikan start dan end index."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "mcq",
+      "question": {
+        "id": "q3",
+        "type": "mcq",
+        "question": "Apa output dari kode berikut?",
+        "code": "text = \"python\"\nprint(text[:3])",
+        "options": [
+          "pyt",
+          "yth",
+          "tho",
+          "error"
+        ],
+        "answer": "pyt",
+        "correctFeedback": "Jika start kosong, maka dimulai dari index 0.",
+        "wrongFeedback": "text[:3] berarti dari awal sampai index 2."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "fill",
+      "question": {
+        "id": "q4",
+        "type": "fill",
+        "instruction": "Ambil 'hon'",
+        "code": "text = \"python\"\nprint(text[__])",
+        "options": [
+          "3:",
+          "2:",
+          "4:",
+          "1:"
+        ],
+        "answer": "3:",
+        "expectedOutput": "hon",
+        "correctFeedback": "text[3:] berarti dari index 3 sampai akhir.",
+        "wrongFeedback": "Gunakan start index yang tepat."
+      }
+    },
+    {
+      "type": "explanation",
+      "content": "Slicing juga bisa digunakan pada list. Selain itu, kita bisa menggunakan step untuk mengambil data dengan interval tertentu.",
+      "example": "data = [1,2,3,4,5]\nprint(data[::2])  # [1,3,5]"
+    },
+    {
+      "type": "quiz",
+      "quizType": "mcq",
+      "question": {
+        "id": "q5",
+        "type": "mcq",
+        "question": "Apa output dari kode berikut?",
+        "code": "data = [1,2,3,4]\nprint(data[1:3])",
+        "options": [
+          "[2,3]",
+          "[1,2]",
+          "[3,4]",
+          "error"
+        ],
+        "answer": "[2,3]",
+        "correctFeedback": "Index 1 sampai sebelum 3 menghasilkan [2,3].",
+        "wrongFeedback": "Index akhir tidak termasuk."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "fill",
+      "question": {
+        "id": "q6",
+        "type": "fill",
+        "instruction": "Ambil elemen ganjil index",
+        "code": "data = [1,2,3,4,5]\nprint(data[__])",
+        "options": [
+          "::2",
+          "1:3",
+          "2:4",
+          "::1"
+        ],
+        "answer": "::2",
+        "expectedOutput": "[1,3,5]",
+        "correctFeedback": "Step 2 mengambil setiap 2 elemen.",
+        "wrongFeedback": "Gunakan step pada slicing."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "fill",
+      "question": {
+        "id": "q7",
+        "type": "fill",
+        "instruction": "Balik string",
+        "code": "text = \"abc\"\nprint(text[__])",
+        "options": [
+          "::-1",
+          ":1:",
+          "1::",
+          "::"
+        ],
+        "answer": "::-1",
+        "expectedOutput": "cba",
+        "correctFeedback": "Step -1 membalik urutan.",
+        "wrongFeedback": "Gunakan step negatif."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "mcq",
+      "question": {
+        "id": "q8",
+        "type": "mcq",
+        "question": "Slicing digunakan untuk?",
+        "code": "text[1:3]",
+        "options": [
+          "Mengambil sebagian data",
+          "Menghapus data",
+          "Menambah data",
+          "Mengubah tipe data"
+        ],
+        "answer": "Mengambil sebagian data",
+        "correctFeedback": "Slicing digunakan untuk mengambil sebagian data.",
+        "wrongFeedback": "Slicing tidak menghapus atau menambah data."
+      }
+    }
+  ]
+}

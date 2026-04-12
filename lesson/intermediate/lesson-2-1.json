@@ -1,0 +1,173 @@
+{
+  "id": "int-lesson-1",
+  "title": "List",
+  "level": "intermediate",
+  "pages": [
+    {
+      "type": "explanation",
+      "content": "List digunakan untuk menyimpan banyak data dalam satu variable. Setiap elemen memiliki index yang dimulai dari 0.",
+      "example": "data = [10, 20, 30]\nprint(data[0])  # 10"
+    },
+    {
+      "type": "quiz",
+      "quizType": "mcq",
+      "question": {
+        "id": "q1",
+        "type": "mcq",
+        "question": "Apa output dari kode berikut?",
+        "code": "data = [10, 20, 30]\nprint(data[1])",
+        "options": [
+          "10",
+          "20",
+          "30",
+          "error"
+        ],
+        "answer": "20",
+        "correctFeedback": "Index ke-1 adalah elemen kedua yaitu 20.",
+        "wrongFeedback": "Index dimulai dari 0, jadi data[1] adalah elemen kedua."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "fill",
+      "question": {
+        "id": "q2",
+        "type": "fill",
+        "instruction": "Ambil elemen terakhir",
+        "code": "data = [1, 2, 3]\nprint(data[__])",
+        "options": [
+          "-1",
+          "0",
+          "1",
+          "2"
+        ],
+        "answer": "-1",
+        "expectedOutput": "3",
+        "correctFeedback": "Index -1 mengambil elemen terakhir.",
+        "wrongFeedback": "Gunakan index negatif untuk mengambil dari belakang."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "mcq",
+      "question": {
+        "id": "q3",
+        "type": "mcq",
+        "question": "Apa output dari kode berikut?",
+        "code": "data = [5, 6, 7]\nprint(len(data))",
+        "options": [
+          "2",
+          "3",
+          "4",
+          "error"
+        ],
+        "answer": "3",
+        "correctFeedback": "List memiliki 3 elemen.",
+        "wrongFeedback": "len() menghitung jumlah elemen dalam list."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "fill",
+      "question": {
+        "id": "q4",
+        "type": "fill",
+        "instruction": "Tambahkan elemen ke list",
+        "code": "data = [1, 2]\ndata.__ (3)\nprint(data)",
+        "options": [
+          "append",
+          "add",
+          "push",
+          "insert"
+        ],
+        "answer": "append",
+        "expectedOutput": "[1, 2, 3]",
+        "correctFeedback": "append() menambahkan elemen ke akhir list.",
+        "wrongFeedback": "Method yang digunakan adalah append()."
+      }
+    },
+    {
+      "type": "explanation",
+      "content": "Kita bisa mengubah nilai dalam list menggunakan index, serta melakukan operasi seperti menghapus dan mengganti data.",
+      "example": "data = [1, 2, 3]\ndata[0] = 10\nprint(data)  # [10, 2, 3]"
+    },
+    {
+      "type": "quiz",
+      "quizType": "fill",
+      "question": {
+        "id": "q5",
+        "type": "fill",
+        "instruction": "Ganti nilai pertama menjadi 100",
+        "code": "data = [1, 2, 3]\ndata[__] = 100\nprint(data)",
+        "options": [
+          "0",
+          "1",
+          "2",
+          "-1"
+        ],
+        "answer": "0",
+        "expectedOutput": "[100, 2, 3]",
+        "correctFeedback": "Index 0 adalah elemen pertama.",
+        "wrongFeedback": "Elemen pertama berada di index 0."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "mcq",
+      "question": {
+        "id": "q6",
+        "type": "mcq",
+        "question": "Apa output dari kode berikut?",
+        "code": "data = [1, 2]\ndata.append(3)\nprint(data)",
+        "options": [
+          "[1, 2]",
+          "[1, 2, 3]",
+          "[3, 1, 2]",
+          "error"
+        ],
+        "answer": "[1, 2, 3]",
+        "correctFeedback": "append menambahkan elemen di akhir.",
+        "wrongFeedback": "append selalu menambahkan di akhir list."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "fill",
+      "question": {
+        "id": "q7",
+        "type": "fill",
+        "instruction": "Hapus elemen terakhir",
+        "code": "data = [1, 2, 3]\ndata.__()\nprint(data)",
+        "options": [
+          "pop",
+          "remove",
+          "delete",
+          "clear"
+        ],
+        "answer": "pop",
+        "expectedOutput": "[1, 2]",
+        "correctFeedback": "pop() menghapus elemen terakhir.",
+        "wrongFeedback": "pop() digunakan untuk menghapus elemen terakhir."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "mcq",
+      "question": {
+        "id": "q8",
+        "type": "mcq",
+        "question": "Apa output dari kode berikut?",
+        "code": "data = [1, 2, 3]\ndata[1] = 5\nprint(data)",
+        "options": [
+          "[1, 2, 3]",
+          "[1, 5, 3]",
+          "[5, 2, 3]",
+          "error"
+        ],
+        "answer": "[1, 5, 3]",
+        "correctFeedback": "Elemen di index 1 diganti menjadi 5.",
+        "wrongFeedback": "data[1] berarti elemen kedua."
+      }
+    }
+  ]
+}

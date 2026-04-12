@@ -1,0 +1,173 @@
+{
+  "id": "int-lesson-3",
+  "title": "Loop (for)",
+  "level": "intermediate",
+  "pages": [
+    {
+      "type": "explanation",
+      "content": "Loop digunakan untuk menjalankan kode berulang kali. Loop for biasanya digunakan untuk mengakses setiap elemen dalam list.",
+      "example": "data = [1, 2, 3]\nfor x in data:\n    print(x)"
+    },
+    {
+      "type": "quiz",
+      "quizType": "mcq",
+      "question": {
+        "id": "q1",
+        "type": "mcq",
+        "question": "Apa output dari kode berikut?",
+        "code": "data = [1, 2]\nfor x in data:\n    print(x)",
+        "options": [
+          "1 2",
+          "1\n2",
+          "2\n1",
+          "error"
+        ],
+        "answer": "1\n2",
+        "correctFeedback": "Loop akan mencetak setiap elemen satu per satu.",
+        "wrongFeedback": "Loop mencetak elemen secara berurutan."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "fill",
+      "question": {
+        "id": "q2",
+        "type": "fill",
+        "instruction": "Lengkapi loop",
+        "code": "for x __ [1,2,3]:\n    print(x)",
+        "options": [
+          "in",
+          "of",
+          "=",
+          "=="
+        ],
+        "answer": "in",
+        "expectedOutput": "1\n2\n3",
+        "correctFeedback": "for x in list adalah sintaks yang benar.",
+        "wrongFeedback": "Gunakan keyword 'in'."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "mcq",
+      "question": {
+        "id": "q3",
+        "type": "mcq",
+        "question": "Apa output dari kode berikut?",
+        "code": "for i in range(3):\n    print(i)",
+        "options": [
+          "1 2 3",
+          "0 1 2",
+          "0 1 2 3",
+          "error"
+        ],
+        "answer": "0 1 2",
+        "correctFeedback": "range(3) menghasilkan 0, 1, 2.",
+        "wrongFeedback": "range dimulai dari 0."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "fill",
+      "question": {
+        "id": "q4",
+        "type": "fill",
+        "instruction": "Loop dari 0 sampai 4",
+        "code": "for i in range(__):\n    print(i)",
+        "options": [
+          "5",
+          "4",
+          "6",
+          "3"
+        ],
+        "answer": "5",
+        "expectedOutput": "0\n1\n2\n3\n4",
+        "correctFeedback": "range(5) menghasilkan 0–4.",
+        "wrongFeedback": "range berhenti sebelum angka terakhir."
+      }
+    },
+    {
+      "type": "explanation",
+      "content": "Loop juga bisa digunakan untuk melakukan operasi seperti penjumlahan atau menghitung jumlah data.",
+      "example": "total = 0\nfor x in [1,2,3]:\n    total += x\nprint(total)  # 6"
+    },
+    {
+      "type": "quiz",
+      "quizType": "fill",
+      "question": {
+        "id": "q5",
+        "type": "fill",
+        "instruction": "Jumlahkan semua angka",
+        "code": "total = 0\nfor x in [1,2,3]:\n    total __ x\nprint(total)",
+        "options": [
+          "+=",
+          "=",
+          "+",
+          "*"
+        ],
+        "answer": "+=",
+        "expectedOutput": "6",
+        "correctFeedback": "+= digunakan untuk menambahkan nilai.",
+        "wrongFeedback": "Gunakan += untuk akumulasi."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "mcq",
+      "question": {
+        "id": "q6",
+        "type": "mcq",
+        "question": "Apa output dari kode berikut?",
+        "code": "total = 0\nfor x in [2,2]:\n    total += x\nprint(total)",
+        "options": [
+          "2",
+          "4",
+          "22",
+          "error"
+        ],
+        "answer": "4",
+        "correctFeedback": "2 + 2 = 4.",
+        "wrongFeedback": "Loop menjumlahkan semua elemen."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "fill",
+      "question": {
+        "id": "q7",
+        "type": "fill",
+        "instruction": "Hitung jumlah elemen",
+        "code": "count = 0\nfor x in [1,2,3]:\n    count __ 1\nprint(count)",
+        "options": [
+          "+=",
+          "=",
+          "+",
+          "*"
+        ],
+        "answer": "+=",
+        "expectedOutput": "3",
+        "correctFeedback": "count bertambah setiap iterasi.",
+        "wrongFeedback": "Gunakan += untuk menambah."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "mcq",
+      "question": {
+        "id": "q8",
+        "type": "mcq",
+        "question": "Loop digunakan untuk?",
+        "code": "for x in data:\n    print(x)",
+        "options": [
+          "Menjalankan kode berulang",
+          "Menyimpan data",
+          "Membuat fungsi",
+          "Menghapus data"
+        ],
+        "answer": "Menjalankan kode berulang",
+        "correctFeedback": "Loop digunakan untuk pengulangan.",
+        "wrongFeedback": "Loop bukan untuk menyimpan data."
+      }
+    }
+  ]
+}

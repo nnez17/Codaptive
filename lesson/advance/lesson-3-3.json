@@ -1,0 +1,173 @@
+{
+  "id": "adv-lesson-3",
+  "title": "Data Parsing",
+  "level": "advanced",
+  "pages": [
+    {
+      "type": "explanation",
+      "content": "Data parsing adalah proses mengambil dan mengolah data dari format tertentu. Contohnya memecah string menjadi list menggunakan split().",
+      "example": "text = \"a,b,c\"\ndata = text.split(\",\")\nprint(data)  # ['a','b','c']"
+    },
+    {
+      "type": "quiz",
+      "quizType": "mcq",
+      "question": {
+        "id": "q1",
+        "type": "mcq",
+        "question": "Apa output dari kode berikut?",
+        "code": "text = \"1,2,3\"\nprint(text.split(\",\"))",
+        "options": [
+          "['1','2','3']",
+          "[1,2,3]",
+          "1,2,3",
+          "error"
+        ],
+        "answer": "['1','2','3']",
+        "correctFeedback": "split() mengubah string menjadi list.",
+        "wrongFeedback": "split() menghasilkan list string."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "fill",
+      "question": {
+        "id": "q2",
+        "type": "fill",
+        "instruction": "Pisahkan berdasarkan koma",
+        "code": "text = \"a,b,c\"\nprint(text.split(__))",
+        "options": [
+          "\",\"",
+          "\" \"",
+          "\";\"",
+          "\".\""
+        ],
+        "answer": "\",\"",
+        "expectedOutput": "['a','b','c']",
+        "correctFeedback": "Pemisahnya adalah koma.",
+        "wrongFeedback": "Gunakan tanda pemisah yang sesuai."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "mcq",
+      "question": {
+        "id": "q3",
+        "type": "mcq",
+        "question": "Apa output dari kode berikut?",
+        "code": "data = \"1 2 3\".split(\" \")\nprint(len(data))",
+        "options": [
+          "2",
+          "3",
+          "1",
+          "error"
+        ],
+        "answer": "3",
+        "correctFeedback": "Ada 3 elemen dalam list.",
+        "wrongFeedback": "split menghasilkan list."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "fill",
+      "question": {
+        "id": "q4",
+        "type": "fill",
+        "instruction": "Ambil elemen pertama",
+        "code": "data = \"a,b,c\".split(\",\")\nprint(data[__])",
+        "options": [
+          "0",
+          "1",
+          "2",
+          "-1"
+        ],
+        "answer": "0",
+        "expectedOutput": "a",
+        "correctFeedback": "Index 0 adalah elemen pertama.",
+        "wrongFeedback": "Ingat index dimulai dari 0."
+      }
+    },
+    {
+      "type": "explanation",
+      "content": "Setelah parsing, kita bisa mengolah data tersebut, seperti mengubah tipe data atau menjumlahkan nilai.",
+      "example": "data = \"1,2,3\".split(\",\")\ntotal = 0\nfor x in data:\n    total += int(x)\nprint(total)  # 6"
+    },
+    {
+      "type": "quiz",
+      "quizType": "fill",
+      "question": {
+        "id": "q5",
+        "type": "fill",
+        "instruction": "Ubah string ke integer",
+        "code": "x = \"5\"\nprint(__ (x))",
+        "options": [
+          "int",
+          "str",
+          "float",
+          "len"
+        ],
+        "answer": "int",
+        "expectedOutput": "5",
+        "correctFeedback": "int() mengubah string menjadi angka.",
+        "wrongFeedback": "Gunakan int() untuk konversi."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "mcq",
+      "question": {
+        "id": "q6",
+        "type": "mcq",
+        "question": "Apa output dari kode berikut?",
+        "code": "data = \"1,2\".split(\",\")\ntotal = 0\nfor x in data:\n    total += int(x)\nprint(total)",
+        "options": [
+          "3",
+          "12",
+          "1,2",
+          "error"
+        ],
+        "answer": "3",
+        "correctFeedback": "1 + 2 = 3.",
+        "wrongFeedback": "Data harus diubah ke int dulu."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "fill",
+      "question": {
+        "id": "q7",
+        "type": "fill",
+        "instruction": "Loop hasil split",
+        "code": "data = \"1,2,3\".split(\",\")\nfor x __ data:\n    print(x)",
+        "options": [
+          "in",
+          "of",
+          "=",
+          "=="
+        ],
+        "answer": "in",
+        "expectedOutput": "1\n2\n3",
+        "correctFeedback": "Gunakan 'in' untuk iterasi.",
+        "wrongFeedback": "Gunakan keyword yang benar."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "mcq",
+      "question": {
+        "id": "q8",
+        "type": "mcq",
+        "question": "Data parsing digunakan untuk?",
+        "code": "text.split(\",\")",
+        "options": [
+          "Mengolah data mentah",
+          "Menghapus data",
+          "Mengubah warna UI",
+          "Menjalankan loop"
+        ],
+        "answer": "Mengolah data mentah",
+        "correctFeedback": "Parsing digunakan untuk mengolah data.",
+        "wrongFeedback": "Parsing fokus pada data, bukan UI."
+      }
+    }
+  ]
+}

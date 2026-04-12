@@ -1,0 +1,173 @@
+{
+  "id": "lesson-3",
+  "title": "String Method & Index",
+  "level": "beginner",
+  "pages": [
+    {
+      "type": "explanation",
+      "content": "String adalah kumpulan karakter. Kita bisa mengambil karakter tertentu menggunakan index. Index dimulai dari 0.",
+      "example": "text = \"python\"\nprint(text[0])  # p"
+    },
+    {
+      "type": "quiz",
+      "quizType": "mcq",
+      "question": {
+        "id": "q1",
+        "type": "mcq",
+        "question": "Apa output dari code berikut?",
+        "code": "print(\"python\"[3])",
+        "options": [
+          "p",
+          "t",
+          "h",
+          "o"
+        ],
+        "answer": "h",
+        "correctFeedback": "Index dimulai dari 0, jadi index ke-3 adalah 'h'.",
+        "wrongFeedback": "Ingat index dimulai dari 0, bukan 1."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "fill",
+      "question": {
+        "id": "q2",
+        "type": "fill",
+        "instruction": "Ambil huruf pertama",
+        "code": "print(\"hello\"[__])",
+        "options": [
+          "0",
+          "1",
+          "-1",
+          "2"
+        ],
+        "answer": "0",
+        "expectedOutput": "h",
+        "correctFeedback": "Huruf pertama selalu di index 0.",
+        "wrongFeedback": "Python menggunakan index mulai dari 0."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "mcq",
+      "question": {
+        "id": "q3",
+        "type": "mcq",
+        "question": "Apa output dari code berikut?",
+        "code": "print(\"hello\"[-1])",
+        "options": [
+          "h",
+          "o",
+          "e",
+          "error"
+        ],
+        "answer": "o",
+        "correctFeedback": "Index -1 mengambil karakter terakhir.",
+        "wrongFeedback": "Index negatif mengambil dari belakang."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "fill",
+      "question": {
+        "id": "q4",
+        "type": "fill",
+        "instruction": "Ambil huruf terakhir",
+        "code": "print(\"hello\"[__])",
+        "options": [
+          "-1",
+          "0",
+          "1",
+          "2"
+        ],
+        "answer": "-1",
+        "expectedOutput": "o",
+        "correctFeedback": "-1 berarti karakter terakhir.",
+        "wrongFeedback": "Gunakan index negatif untuk belakang."
+      }
+    },
+    {
+      "type": "explanation",
+      "content": "String memiliki method seperti upper() dan lower(). Method ini digunakan untuk mengubah isi string.",
+      "example": "text = \"abc\"\nprint(text.upper())  # ABC"
+    },
+    {
+      "type": "quiz",
+      "quizType": "fill",
+      "question": {
+        "id": "q5",
+        "type": "fill",
+        "instruction": "Ubah menjadi huruf besar",
+        "code": "print(\"abc\".__())",
+        "options": [
+          "upper",
+          "lower",
+          "len",
+          "int"
+        ],
+        "answer": "upper",
+        "expectedOutput": "ABC",
+        "correctFeedback": "upper() mengubah semua huruf menjadi kapital.",
+        "wrongFeedback": "Gunakan method upper()."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "mcq",
+      "question": {
+        "id": "q6",
+        "type": "mcq",
+        "question": "Apa output dari code berikut?",
+        "code": "print(\"ABC\".lower())",
+        "options": [
+          "ABC",
+          "abc",
+          "Abc",
+          "error"
+        ],
+        "answer": "abc",
+        "correctFeedback": "lower() mengubah huruf menjadi kecil.",
+        "wrongFeedback": "Semua huruf akan menjadi kecil."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "fill",
+      "question": {
+        "id": "q7",
+        "type": "fill",
+        "instruction": "Hitung panjang string",
+        "code": "print(len(__))",
+        "options": [
+          "\"hello\"",
+          "hello",
+          "5",
+          "\"5\""
+        ],
+        "answer": "\"hello\"",
+        "expectedOutput": "5",
+        "correctFeedback": "len() menghitung jumlah karakter.",
+        "wrongFeedback": "len() butuh string, bukan variable kosong."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "mcq",
+      "question": {
+        "id": "q8",
+        "type": "mcq",
+        "question": "Apa output dari code berikut?",
+        "code": "len(\"abc\".upper())",
+        "options": [
+          "2",
+          "3",
+          "4",
+          "error"
+        ],
+        "answer": "3",
+        "correctFeedback": "Method upper() tidak mengubah panjang string.",
+        "wrongFeedback": "Panjang string tetap sama."
+      }
+    }
+  ]
+}

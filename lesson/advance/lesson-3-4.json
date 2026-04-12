@@ -1,0 +1,173 @@
+{
+  "id": "adv-lesson-4",
+  "title": "Optimization Thinking",
+  "level": "advanced",
+  "pages": [
+    {
+      "type": "explanation",
+      "content": "Optimization thinking adalah cara menulis kode yang lebih efisien dan sederhana. Kita menghindari proses yang tidak perlu dan memilih cara yang lebih cepat atau lebih bersih.",
+      "example": "data = [1,2,3]\nprint(sum(data))  # lebih efisien daripada loop manual"
+    },
+    {
+      "type": "quiz",
+      "quizType": "mcq",
+      "question": {
+        "id": "q1",
+        "type": "mcq",
+        "question": "Mana yang lebih efisien?",
+        "code": "A: loop manual\nB: sum(data)",
+        "options": [
+          "A",
+          "B",
+          "Sama saja",
+          "Error"
+        ],
+        "answer": "B",
+        "correctFeedback": "sum() lebih singkat dan efisien dibanding loop manual.",
+        "wrongFeedback": "Gunakan fungsi bawaan jika tersedia."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "fill",
+      "question": {
+        "id": "q2",
+        "type": "fill",
+        "instruction": "Gunakan fungsi bawaan untuk menjumlahkan",
+        "code": "data = [1,2,3]\nprint(__ (data))",
+        "options": [
+          "sum",
+          "len",
+          "max",
+          "min"
+        ],
+        "answer": "sum",
+        "expectedOutput": "6",
+        "correctFeedback": "sum() menjumlahkan semua elemen.",
+        "wrongFeedback": "Gunakan fungsi yang tepat."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "mcq",
+      "question": {
+        "id": "q3",
+        "type": "mcq",
+        "question": "Apa output dari kode berikut?",
+        "code": "data = [3,1,2]\nprint(sorted(data))",
+        "options": [
+          "[1,2,3]",
+          "[3,1,2]",
+          "[2,3,1]",
+          "error"
+        ],
+        "answer": "[1,2,3]",
+        "correctFeedback": "sorted() mengurutkan data.",
+        "wrongFeedback": "sorted menghasilkan list baru yang terurut."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "fill",
+      "question": {
+        "id": "q4",
+        "type": "fill",
+        "instruction": "Ambil nilai terbesar",
+        "code": "data = [1,5,3]\nprint(__ (data))",
+        "options": [
+          "max",
+          "min",
+          "sum",
+          "len"
+        ],
+        "answer": "max",
+        "expectedOutput": "5",
+        "correctFeedback": "max() mengambil nilai terbesar.",
+        "wrongFeedback": "Gunakan fungsi yang sesuai."
+      }
+    },
+    {
+      "type": "explanation",
+      "content": "Kode yang baik tidak hanya benar, tetapi juga mudah dibaca dan efisien. Hindari perulangan yang tidak perlu dan gunakan fitur Python yang sudah tersedia.",
+      "example": "data = [1,2,3,4]\n# kurang efisien\n# pakai loop\n\n# lebih efisien\nprint(max(data))"
+    },
+    {
+      "type": "quiz",
+      "quizType": "fill",
+      "question": {
+        "id": "q5",
+        "type": "fill",
+        "instruction": "Ambil nilai terkecil",
+        "code": "data = [4,2,1]\nprint(__ (data))",
+        "options": [
+          "min",
+          "max",
+          "sum",
+          "len"
+        ],
+        "answer": "min",
+        "expectedOutput": "1",
+        "correctFeedback": "min() mengambil nilai terkecil.",
+        "wrongFeedback": "Gunakan fungsi yang tepat."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "mcq",
+      "question": {
+        "id": "q6",
+        "type": "mcq",
+        "question": "Kenapa harus menghindari loop berlebihan?",
+        "code": "for x in data:",
+        "options": [
+          "Lebih lambat",
+          "Lebih cepat",
+          "Lebih aman",
+          "Tidak berpengaruh"
+        ],
+        "answer": "Lebih lambat",
+        "correctFeedback": "Loop yang tidak perlu membuat program lebih lambat.",
+        "wrongFeedback": "Efisiensi penting dalam program."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "fill",
+      "question": {
+        "id": "q7",
+        "type": "fill",
+        "instruction": "Hitung jumlah elemen",
+        "code": "data = [1,2,3]\nprint(__ (data))",
+        "options": [
+          "len",
+          "sum",
+          "max",
+          "min"
+        ],
+        "answer": "len",
+        "expectedOutput": "3",
+        "correctFeedback": "len() menghitung jumlah elemen.",
+        "wrongFeedback": "Gunakan len()."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "mcq",
+      "question": {
+        "id": "q8",
+        "type": "mcq",
+        "question": "Tujuan optimization thinking adalah?",
+        "code": "sum(data)",
+        "options": [
+          "Kode lebih efisien & clean",
+          "Kode lebih panjang",
+          "Kode lebih rumit",
+          "Kode lebih lambat"
+        ],
+        "answer": "Kode lebih efisien & clean",
+        "correctFeedback": "Tujuan utama adalah efisiensi dan keterbacaan.",
+        "wrongFeedback": "Optimization membuat kode lebih baik, bukan lebih buruk."
+      }
+    }
+  ]
+}

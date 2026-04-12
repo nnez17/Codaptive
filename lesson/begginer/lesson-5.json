@@ -1,0 +1,173 @@
+{
+  "id": "lesson-5",
+  "title": "If Else",
+  "level": "beginner",
+  "pages": [
+    {
+      "type": "explanation",
+      "content": "Percabangan (if) digunakan untuk menjalankan kode berdasarkan kondisi. Jika kondisi bernilai True, maka kode di dalam if akan dijalankan.",
+      "example": "x = 10\nif x > 5:\n    print(\"A\")  # Akan dijalankan"
+    },
+    {
+      "type": "quiz",
+      "quizType": "mcq",
+      "question": {
+        "id": "q1",
+        "type": "mcq",
+        "question": "Apa output dari kode berikut?",
+        "code": "x = 10\nif x > 5:\n    print(\"A\")",
+        "options": [
+          "A",
+          "B",
+          "error",
+          "Tidak ada output"
+        ],
+        "answer": "A",
+        "correctFeedback": "Karena 10 > 5 bernilai True, maka print(\"A\") dijalankan.",
+        "wrongFeedback": "Kondisi x > 5 bernilai True, jadi kode di dalam if akan dijalankan."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "fill",
+      "question": {
+        "id": "q2",
+        "type": "fill",
+        "instruction": "Lengkapi kondisi agar menghasilkan output \"YES\"",
+        "code": "x = 5\nif x __ 5:\n    print(\"YES\")",
+        "options": [
+          "==",
+          ">",
+          "<",
+          "!="
+        ],
+        "answer": "==",
+        "expectedOutput": "YES",
+        "correctFeedback": "5 == 5 bernilai True.",
+        "wrongFeedback": "Gunakan operator perbandingan yang membuat kondisi bernilai True."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "mcq",
+      "question": {
+        "id": "q3",
+        "type": "mcq",
+        "question": "Apa output dari kode berikut?",
+        "code": "x = 2\nif x > 5:\n    print(\"A\")\nelse:\n    print(\"B\")",
+        "options": [
+          "A",
+          "B",
+          "error",
+          "Tidak ada output"
+        ],
+        "answer": "B",
+        "correctFeedback": "Karena kondisi False, maka bagian else dijalankan.",
+        "wrongFeedback": "Karena 2 > 5 bernilai False, maka masuk ke else."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "fill",
+      "question": {
+        "id": "q4",
+        "type": "fill",
+        "instruction": "Lengkapi bagian else",
+        "code": "if x > 5:\n    print(\"A\")\n__:\n    print(\"B\")",
+        "options": [
+          "else",
+          "elif",
+          "if",
+          "for"
+        ],
+        "answer": "else",
+        "expectedOutput": "B",
+        "correctFeedback": "else digunakan ketika kondisi if bernilai False.",
+        "wrongFeedback": "Gunakan else untuk kondisi alternatif."
+      }
+    },
+    {
+      "type": "explanation",
+      "content": "Selain if dan else, kita juga bisa menggunakan elif untuk menambahkan kondisi lain. Python akan mengecek kondisi dari atas ke bawah.",
+      "example": "x = 2\nif x == 1:\n    print(\"A\")\nelif x == 2:\n    print(\"B\")  # Akan dijalankan"
+    },
+    {
+      "type": "quiz",
+      "quizType": "fill",
+      "question": {
+        "id": "q5",
+        "type": "fill",
+        "instruction": "Lengkapi dengan elif",
+        "code": "if x == 1:\n    print(\"A\")\n__ x == 2:\n    print(\"B\")",
+        "options": [
+          "elif",
+          "else",
+          "if",
+          "for"
+        ],
+        "answer": "elif",
+        "expectedOutput": "B",
+        "correctFeedback": "elif digunakan untuk kondisi tambahan.",
+        "wrongFeedback": "Gunakan elif untuk kondisi berikutnya."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "mcq",
+      "question": {
+        "id": "q6",
+        "type": "mcq",
+        "question": "Apa output dari kode berikut?",
+        "code": "x = 6\nif x > 10:\n    print(\"A\")\nelif x > 5:\n    print(\"B\")",
+        "options": [
+          "A",
+          "B",
+          "error",
+          "Tidak ada output"
+        ],
+        "answer": "B",
+        "correctFeedback": "Kondisi pertama False, tapi kondisi elif True.",
+        "wrongFeedback": "Python akan mengecek kondisi satu per satu dari atas."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "fill",
+      "question": {
+        "id": "q7",
+        "type": "fill",
+        "instruction": "Lengkapi kondisi agar menghasilkan YES",
+        "code": "x = 7\nif x > 5:\n    if x __ 10:\n        print(\"YES\")",
+        "options": [
+          "<",
+          ">",
+          "==",
+          "!="
+        ],
+        "answer": "<",
+        "expectedOutput": "YES",
+        "correctFeedback": "7 lebih besar dari 5 dan lebih kecil dari 10.",
+        "wrongFeedback": "Gunakan operator yang membuat kedua kondisi bernilai True."
+      }
+    },
+    {
+      "type": "quiz",
+      "quizType": "mcq",
+      "question": {
+        "id": "q8",
+        "type": "mcq",
+        "question": "Apa yang dimaksud dengan nested if?",
+        "code": "if x > 5:\n    if x < 10:\n        print(\"YES\")",
+        "options": [
+          "Loop di dalam loop",
+          "If di dalam if",
+          "Function di dalam function",
+          "Error dalam kode"
+        ],
+        "answer": "If di dalam if",
+        "correctFeedback": "Nested if adalah percabangan di dalam percabangan.",
+        "wrongFeedback": "Nested if berarti if yang berada di dalam if lain."
+      }
+    }
+  ]
+}
