@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || "https://codaptive.vercel.app",
+  baseURL: import.meta.env.VITE_API_URL || "https://codaptive.vercel.app/_/backend",
   withCredentials: true,
 });
 
